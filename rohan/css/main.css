@@ -1,4 +1,4 @@
-	body {
+body {
 	background: #FFFFFF;
 	font-family: "Avenir", "Droid Sans", "Segoe UI", Helvetica, Arial, sans-serif;
 	font-size: 1em;
@@ -48,10 +48,10 @@ vertical-align: top;
 
 #content-left {
 		
-		width: 65%;
+		width: 70%;
 		height: 100%;
 		float: left;
-		background: #EBEBEB;
+	/*	background: #EBEBEB; */
 		padding: 20px;
 		}
 
@@ -64,17 +64,36 @@ vertical-align: top;
 		}
 
 #content-gallery {
-		margin: 10px 10 px 10 px 10 px;
-		width: 96%;
-		height: 60%;
-		padding: 12px;
-		border: 1px dotted #222;
+		/*margin: 10px 10px 10px 10px;*/
+		width: 440px;
+		height: 400px;
+	/*	padding: 25px;
+		border: 1px dotted #222;*/
 		-moz-box-shadow: 4px 4px 2px #ddd;
 		-webkit-box-shadow: 4px 4px 2px #ddd;
 		box-shadow: 4px 4px 2px #ddd;
-		margin-bottom: 20px;
-
+		
+		margin-bottom: 10px;
+		margin-top: 10px;
+		margin-left: 15px;
+		margin-right: 15px;
+		float: left;
 		}
+#set-gallery{
+width: 200px;
+height: 400px;
+background: #AAEAAB;
+float:left;
+-moz-box-shadow: 4px 4px 2px #ddd;
+		-webkit-box-shadow: 4px 4px 2px #ddd;
+		box-shadow: 4px 4px 2px #ddd;
+		background: #AAEAAA;
+		margin-bottom: 10px;
+		margin-top: 10px;
+		margin-left: 15px;
+		margin-right: 15px;
+
+}		
 
 #content-tags{
 
@@ -98,17 +117,27 @@ border: 1px dotted #222;
 
 
 
-#content-box_map {
+#map_canvas {
 		margin: 0 auto;
-		width: 90%;
-		padding: 12px;
-		border: 1px dotted #222;
-		-moz-box-shadow: 4px 4px 2px #ddd;
-		-webkit-box-shadow: 4px 4px 2px #ddd;
-		box-shadow: 4px 4px 2px #ddd;
+		width: 400px;
+		height: 250px;
+		
 		}
 	
+#sets li
+{
 
+
+list-style-type:none;
+
+}
+
+#sets li a
+{
+
+	width:6em;
+	padding:0.2em 0.6em;
+}
 		
 #linkbox {
 		width: 990px;
@@ -147,3 +176,14 @@ a:active {text-decoration: underline; color: #666;}
 input {font-size: 1em; margin: 0px; padding: 8px; border: 1px solid #222;}
 
 input#username {width: 200px;}
+
+#demo-frame > div.demo { padding: 10px !important; }
+.scroll-pane { overflow: auto; width: 99%; float:left; }
+.scroll-content { width: 2440px; float: left; }
+.scroll-content-item { width: 100px; height: 100px; float: left; margin: 10px; font-size: 3em; line-height: 96px; text-align: center; }
+* html .scroll-content-item { display: inline; } /* IE6 float double margin bug */
+.scroll-bar-wrap { clear: left; padding: 0 4px 0 2px; margin: 0 -1px -1px -1px; }
+.scroll-bar-wrap .ui-slider { background: none; border:0; height: 2em; margin: 0 auto;  }
+.scroll-bar-wrap .ui-handle-helper-parent { position: relative; width: 100%; height: 100%; margin: 0 auto; }
+.scroll-bar-wrap .ui-slider-handle { top:.2em; height: 1.5em; }
+.scroll-bar-wrap .ui-slider-handle .ui-icon { margin: -8px auto 0; position: relative; top: 50%; }	

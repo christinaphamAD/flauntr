@@ -12,17 +12,22 @@ var currentTrail;
 // var tags = [];
 
 // Load Get Trails button functionality on document ready
+
+
+
+
 $(document).ready(function() {
     // Load trailmaster for the specified user when the #get-trails form is submitted
     
+
+    //get suggestive tags
 	$('#gettags').click(function(event){
 	
 	$('#trails ul').empty();
 	var tag = $('#tag').val();
 	alert(tag);
-	var flickurl = 	'http://api.flickr.com/services/rest/?method=flickr.tags.getRelated&api_key=29a78ae8fdd416754cf78834d0f307e5&tag='+tag+'&format=json&nojsoncallback=1';
+	var flickurl = 	'http://api.flickr.com/services/rest/?method=flickr.tags.getRelated&api_key=ab75913e379a94e67332458e567381ba&tag='+tag+'&format=json&nojsoncallback=1';
 	$.getJSON(flickurl,function(data,status){
-//		alert("callback");
 		alert(data.stat);
 		var x = data.tags.tag;
 		if(x.length>8){
@@ -33,7 +38,7 @@ $(document).ready(function() {
 			limit = x.length;
 		}
 		for (var i = 0; i < limit; i++) {
-		$('<li></li>').html('<div class = "trailItem" id="' + x[i]._content + '"> <a href="#" >'+ x[i]._content + '</a></div>') // slice out the "tags:" portion of each tag
+		$('<li></li>').html('<div class = "trailItem" id="' + x[i]._content + '"> <a href="#" >'+ x[i]._content +'</a></div>') // slice out the "tags:" portion of each tag
 		.appendTo('#trails ul');				
 		};
 		console.log(data);
@@ -43,11 +48,13 @@ $(document).ready(function() {
 	});	
 	
 	
+
+	//get sets of a user 
 	$('#getsets').click(function(event){
 	
 	$('#sets ul').empty();
 	
-	var flickurl = 	'http://api.flickr.com/services/rest/?method=flickr.photosets.getList&api_key=29a78ae8fdd416754cf78834d0f307e5&format=json&nojsoncallback=1&auth_token=72157631701544472-c0ac536c679c81fb&api_sig=e42c671691d2cf74ced8d12a0cc0102d';
+	var flickurl = 	'http://api.flickr.com/services/rest/?method=flickr.photosets.getList&api_key=ab75913e379a94e67332458e567381ba&user_id=88032686%40N06&format=json&nojsoncallback=1';
 	var x = $.getJSON(flickurl,function(data,status){
 //		alert("callback");
 		alert(data.stat);
@@ -72,7 +79,18 @@ $(document).ready(function() {
 	
 	
 	
-	
+	$('#locate').click(function(event){
+	 
+	 alert('map function');
+	 if (GBrowserIsCompatible()) {
+        var map = new GMap2(document.getElementById("map_canvas"));
+        map.setCenter(new GLatLng(37.4419, -122.1419), 7);
+        map.setMapType(G_HYBRID_MAP);
+        map.setUIToDefault();
+        map.enableRotation();
+    }
+
+	 });	
 	
 	
 	
