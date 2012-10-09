@@ -14,6 +14,43 @@ var currentTrail;
 // Load Get Trails button functionality on document ready
 
 
+/*http://farm{farm-id}.staticflickr.com/{server-id}/{id}_{secret}.jpg (formula for flickr url images)*/
+
+$('a').live('click',function(event){
+var setid = $(this).attr('id');
+var type = $(this).attr('type');
+
+alert(type);
+if(type == "set")
+{
+
+$('.scroll-content').empty();
+
+var url = "http://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key=69ec61b6e4a407a91eb6946b224cb0e1&photoset_id=72157631701567618&format=json&nojsoncallback=1";
+
+$.getJSON(url,function(data,status){
+
+alert(data.stat);
+var pics = data.photoset.photo;
+var imgurl;
+alert(pics.length);
+for (var i = 0; i < pics.length; i++) {
+
+		imgurl = "http://farm"+pics[i].farm+".staticflickr.com/"+pics[i].server+"/"+pics[i].id+"_"+pics[i].secret+".jpg";
+		console.log("click"+imgurl);
+		$('<div id='+i+' class="scroll-content-item ui-widget-header"><img src="'+imgurl+'" height="80" width="80"></div>')
+		.appendTo('.scroll-content');				
+
+		
+	
+};
+
+});
+
+
+}
+return false;
+});
 
 
 $(document).ready(function() {
@@ -26,7 +63,7 @@ $(document).ready(function() {
 	$('#trails ul').empty();
 	var tag = $('#tag').val();
 	alert(tag);
-	var flickurl = 	'http://api.flickr.com/services/rest/?method=flickr.tags.getRelated&api_key=ab75913e379a94e67332458e567381ba&tag='+tag+'&format=json&nojsoncallback=1';
+	var flickurl = 	'http://api.flickr.com/services/rest/?method=flickr.tags.getRelated&api_key=69ec61b6e4a407a91eb6946b224cb0e1&tag='+tag+'&format=json&nojsoncallback=1';
 	$.getJSON(flickurl,function(data,status){
 		alert(data.stat);
 		var x = data.tags.tag;
@@ -54,11 +91,11 @@ $(document).ready(function() {
 	
 	$('#sets ul').empty();
 	
-	var flickurl = 	'http://api.flickr.com/services/rest/?method=flickr.photosets.getList&api_key=ab75913e379a94e67332458e567381ba&user_id=88032686%40N06&format=json&nojsoncallback=1';
+	var flickurl = 	'http://api.flickr.com/services/rest/?method=flickr.photosets.getList&api_key=69ec61b6e4a407a91eb6946b224cb0e1&user_id=88032686%40N06&format=json&nojsoncallback=1';
 	var x = $.getJSON(flickurl,function(data,status){
 //		alert("callback");
 		alert(data.stat);
-		alert("rohan");
+	//	alert("rohan");
 		var x = data.photosets.photoset;
 		if(x.length>8){
 			var limit = 10;
@@ -67,8 +104,18 @@ $(document).ready(function() {
 		{
 			limit = x.length;
 		}
+
+/*http://farm{farm-id}.staticflickr.com/{server-id}/{id}_{secret}.jpg (formula for flickr url images)
+<div class = "trailItem" id="' + x[i].id + '" primary="'+x[i].primary+'" server="'+x[i].server+'" farm="'+x[i].farm+'" secret = "'+x[i].secret+'" photos="'+x[i].photos+'">
+		 <a href="#" id="' + x[i].id + '">' + x[i].title._content + '</a></div>	*/
+
 		for (var i = 0; i < limit; i++) {
-		$('<li></li>').html('<div class = "trailItem" id="' + x[i].title._content + '"> <a href="#" >'+ x[i].title._content + '</a></div>') // slice out the "tags:" portion of each tag
+		//var imgurl = 'http://farm'+x[i].farm+'.staticflickr.com/'+x[i].server+'/'+x[i].id+'_'+x[i].secret';
+		var imgstr = "http://farm"+x[i].farm+".staticflickr.com/"+x[i].server+"/"+x[i].primary+"_"+x[i].secret+".jpg";	
+
+		console.log(imgstr);
+
+		$('<li></li>').html('<div class = "trailItem" id="' + x[i].title._content + '"><img src="'+imgstr+'" height="100" width="100" style=""><a href="#" id='+x[i].id+' type="set" style="float:right">'+ x[i].title._content +'</a></div>') 
 		.appendTo('#sets ul');				
 		};
 	});	
