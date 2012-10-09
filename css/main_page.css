@@ -5,9 +5,18 @@
     Much of this code from: http://www.queness.com/post/923/create-a-simple-infinite-carousel-with-jquery 
 */
 
+* {
+    margin: 0;
+}
+
+body{
+    font-family:Helvetica, Arial, sans-serif;
+    margin: 0px;
+    padding: 0px;
+}
+
 #wrapper {
         margin: 30px 0px 0px 20px;
-        width: 1000px;
 }
 
 
@@ -99,3 +108,9 @@ a#next:hover {
 }
  
 .clear {clear:both}
+
+#albumscroller {
+    width: 100%;
+    height: 250px;
+    background-color: #CCC;
+}
