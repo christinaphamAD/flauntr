@@ -2,106 +2,88 @@
 <html lang="en">
 	<head>
     <meta charset="utf-8">
-		<title></title>
+		<title>Flauntr</title>
 
 		<link rel="stylesheet" type="text/css" href="css/main.css" />
         <!-- jQuery -->
-        <script src="http://arthurche.com/js/jquery-1.8.2.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
         <!-- jQuery UI -->
-
-               <script src="http://maps.google.com/maps?file=api&amp;v=3&amp;key=AIzaSyC372wcD1knOn1A7OetCnpgc3xQtfpACrc&sensor=true_or_false"
-            type="text/javascript"></script>
+		<script type="text/javascript" src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
+        <script src="http://maps.google.com/maps?file=api&amp;v=3&amp;key=AIzaSyC372wcD1knOn1A7OetCnpgc3xQtfpACrc&sensor=true_or_false" type="text/javascript"></script>
         
-		<script type="text/javascript" src="js/main2.js"></script>
-
-	  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.4/jquery-ui.min.js"></script>
+        <!-- Custom JS scripts -->
+        <script type="text/javascript" src="js/main2.js"></script>
 
     <!-- In addition to jQuery, we also need the Google Maps API v3 script -->
     <!-- Be sure to set the sensor variable as per your use case. -->
     <!-- If you're using W3C Geolocation, sensor=true -->
-	
-
 	</head>	
 
 <body>
 <div id="wrapper">
-<div id="headdiv">
-Authentication piece
 
-</div>
-
-
+	<div id="headdiv">
+		Authentication piece
+	</div>
 	
 <div id="content">
 
-<div id="content-left">
+	<div id="content-left">
+		<div id="set-gallery">
 
-	<div id="set-gallery">
-
-		<input type="button" id="getsets" value="Get Sets"/>
+			<input type="button" id="getsets" value="Get Sets"/>
 
 			<div id="sets">
-			<ul>
-				<li></li>
-			</ul>
+				<ul>
+					<li></li>
+				</ul>
 			</div>	
-	</div>
-		<div id="content-gallery">
-				
-		
-
-			<div class="scroll-pane ui-widget ui-widget-header ui-corner-all">
-				<div class="scroll-content">
-				<div class="scroll-content-item ui-widget-header">CLICK ON SETS TO RETRIEVE IMAGES</div>
-				</div>
-				<div class="scroll-bar-wrap ui-widget-content ui-corner-bottom">
-					<div class="scroll-bar"></div>
-				</div>
-			</div>
-
-		
-			
-
-
-
 		</div>
+    
+	<div id="content-gallery">
+    
+		<div class="scroll-pane ui-widget ui-widget-header ui-corner-all">
+        
+			<div class="scroll-content">
+            
+				<div class="scroll-content-item ui-widget-header">
+					CLICK ON SETS TO RETRIEVE IMAGES
+				</div>
+                
+			</div>
+            
+			<div class="scroll-bar-wrap ui-widget-content ui-corner-bottom">
+            
+				<div class="scroll-bar">
+                </div>
+                
+			</div>
+		</div>
+	</div>
 
 
-<div id="content-tagscustom">
+	<div id="content-tagscustom">
+		something
+	</div>
 
-something
-</div>
-
-<div id="content-tags">
+	<div id="content-tags">
 
 			<input type="text" name="tag" id="tag"/>
 			<input type="button" id="gettags" value="Suggest Tags"/> <br>
 
 			<div id="trails">
-			<ul>
-			</ul>
+				<ul>
+				</ul>
 			</div>
-</div>		
-
-
-
-
-		</div>
+		</div>		
+	</div>
 		
-		<div id="content-right">
-		
-		
+	<div id="content-right">
         <!-- This text might look like just a nicety, but it's required by the spec. Help users to expect promises of privacy on the Web. -->
-        <p>The Map</p>
-        <input type="button" id="locate" value="Locate Me"/>
-        <div id="map_canvas"></div>
-    	
-
-		</div>
-		
-		
-
-		
+        	<p>The Map</p>
+        	<input type="button" id="locate" value="Locate Me"/>
+        	<div id="map_canvas"></div>
+	</div>
 </div>
 	
 </div>

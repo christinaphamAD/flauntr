@@ -38,12 +38,18 @@ for (var i = 0; i < pics.length; i++) {
 
 		imgurl = "http://farm"+pics[i].farm+".staticflickr.com/"+pics[i].server+"/"+pics[i].id+"_"+pics[i].secret+".jpg";
 		console.log("click"+imgurl);
-		$('<div id='+i+' class="scroll-content-item ui-widget-header"><img src="'+imgurl+'" height="80" width="80"></div>')
-		.appendTo('.scroll-content');				
-
-		
-	
-};
+		$('<div id="'+i+'" class="scroll-content-item ui-widget-header"><img src="'+imgurl+'" height="80" width="80"></div>')	
+		.appendTo('.scroll-content')
+		.sortable({
+			revert:true
+			})
+		.draggable({
+			cursor:"move", 
+			cursorAt:{top:50, left:50}, 
+			connectToSortable: "#test",
+			revert: invalid
+			});		
+	}
 
 });
 
@@ -83,8 +89,6 @@ $(document).ready(function() {
 
 	return false;
 	});	
-	
-	
 
 	//get sets of a user 
 	$('#getsets').click(function(event){
@@ -116,7 +120,7 @@ $(document).ready(function() {
 		console.log(imgstr);
 
 		$('<li></li>').html('<div class = "trailItem" id="' + x[i].title._content + '"><img src="'+imgstr+'" height="100" width="100" style=""><a href="#" id='+x[i].id+' type="set" style="float:right">'+ x[i].title._content +'</a></div>') 
-		.appendTo('#sets ul');				
+		.appendTo('#sets ul')			
 		};
 	});	
 
@@ -206,6 +210,7 @@ $(document).ready(function() {
         });
         return false;
     });
+	
 
 });
 
