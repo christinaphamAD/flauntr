@@ -56,8 +56,8 @@ vertical-align: top;
 		}
 
 #content-right{
-		height: 70%;
-		width: 35%;
+		height: 400px;
+		width: 200px;
 		float: left;	
 		background: #AAAAAA;
 		padding-left: 10px;
@@ -185,8 +185,8 @@ input#username {width: 200px;}
 
 #demo-frame > div.demo { padding: 10px !important; }
 .scroll-pane { overflow: auto; width: 99%; float:left; }
-.scroll-content { width: 2440px; float: left; }
-.scroll-content-item { width: 100px; height: 100px; float: left; margin: 10px; font-size: 3em; line-height: 96px; text-align: center; }
+.scroll-content { max-width:1200px; min-width: 100%; float: left;  }
+.scroll-content-item { width: 100px; height: 100px; float: left; margin: 10px; text-align: center; }
 * html .scroll-content-item { display: inline; } /* IE6 float double margin bug */
 .scroll-bar-wrap { clear: left; padding: 0 4px 0 2px; margin: 0 -1px -1px -1px; }
 .scroll-bar-wrap .ui-slider { background: none; border:0; height: 2em; margin: 0 auto;  }

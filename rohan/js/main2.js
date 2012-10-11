@@ -11,8 +11,12 @@ var currentTrail;
 // Variable for initial tag holding
 // var tags = [];
 
-// Load Get Trails button functionality on document ready
+// Make img tags clickable
 
+$('img').live('click',function(event){
+var setid = $(this).attr('id');
+var type = $(this).attr('type');
+});
 
 /*http://farm{farm-id}.staticflickr.com/{server-id}/{id}_{secret}.jpg (formula for flickr url images)*/
 
@@ -20,13 +24,53 @@ $('a').live('click',function(event){
 var setid = $(this).attr('id');
 var type = $(this).attr('type');
 
+var $trash = $( "#content-right" );
+	$trashItem = $( ".scroll-content-item");
+
+function deleteImage( $item ) {
+            $item.fadeOut(function() {
+                var $list = $( "ul", $trash ).length ?
+                    $( "ul", $trash ) :
+                    $( "<ul class='gallery ui-helper-reset'/>" ).appendTo( $trash );
+ 
+                $item.find( "a.ui-icon-trash" ).remove();
+                $item.appendTo( $list ).fadeIn(function() {
+                    $item
+                        .find( "img" )
+						.animate({ width: "40px", height: "40px" })
+                });
+            });
+        }
+
+$(function() {
+        // there's the gallery and the trash
+
+// let the trash be droppable, accepting the gallery items
+        $trash.droppable({
+            accept: ".scroll-content > div",
+            activeClass: "ui-state-highlight",
+            drop: function( event, ui ) {
+                deleteImage( ui.draggable );
+            }
+        });
+		
+		$trashItem.draggable({
+            cancel: "a.ui-icon", // clicking an icon won't initiate dragging
+            revert: "invalid", // when not dropped, the item will revert back to its initial position
+            containment: "document",
+            helper: "clone",
+            cursor: "move"
+        });
+		
+});
+
 alert(type);
 if(type == "set")
 {
 
 $('.scroll-content').empty();
 
-var url = "http://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key=69ec61b6e4a407a91eb6946b224cb0e1&photoset_id=72157631701567618&format=json&nojsoncallback=1";
+var url = "http://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key=69ec61b6e4a407a91eb6946b224cb0e1&photoset_id="+setid+"&format=json&nojsoncallback=1";
 
 $.getJSON(url,function(data,status){
 
@@ -40,15 +84,27 @@ for (var i = 0; i < pics.length; i++) {
 		console.log("click"+imgurl);
 		$('<div id="'+i+'" class="scroll-content-item ui-widget-header"><img src="'+imgurl+'" height="80" width="80"></div>')	
 		.appendTo('.scroll-content')
-		.sortable({
-			revert:true
-			})
 		.draggable({
+            cancel: "a.ui-icon", // clicking an icon won't initiate dragging
+            revert: "invalid", // when not dropped, the item will revert back to its initial position
+            containment: "document",
+            helper: "clone",
+            cursor: "move"
+        })
+		.droppable({
+            accept: ".scroll-content-item",
+            activeClass: "custom-state-active",
+            drop: function( event, ui ) {
+                recycleImage( ui.draggable );
+            }
+        });
+		/*.draggable({
 			cursor:"move", 
 			cursorAt:{top:50, left:50}, 
-			connectToSortable: "#test",
-			revert: invalid
-			});		
+			connectToSortable: "#content-right",
+			revert:"invalid",
+			scroll:false
+			});	*/
 	}
 
 });
@@ -95,7 +151,7 @@ $(document).ready(function() {
 	
 	$('#sets ul').empty();
 	
-	var flickurl = 	'http://api.flickr.com/services/rest/?method=flickr.photosets.getList&api_key=69ec61b6e4a407a91eb6946b224cb0e1&user_id=88032686%40N06&format=json&nojsoncallback=1';
+	var flickurl = 	'http://api.flickr.com/services/rest/?method=flickr.photosets.getList&api_key=69ec61b6e4a407a91eb6946b224cb0e1&user_id=18727743@N00&format=json&nojsoncallback=1';
 	var x = $.getJSON(flickurl,function(data,status){
 //		alert("callback");
 		alert(data.stat);
