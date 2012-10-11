@@ -185,7 +185,7 @@ input#username {width: 200px;}
 
 #demo-frame > div.demo { padding: 10px !important; }
 .scroll-pane { overflow: auto; width: 99%; float:left; }
-.scroll-content { max-width:1200px; min-width: 100%; float: left;  }
+.scroll-content { max-width:1200px; min-width: 100%; float: left; height: 400px; overflow-x:auto; overflow-y:scroll }
 .scroll-content-item { width: 100px; height: 100px; float: left; margin: 10px; text-align: center; }
 * html .scroll-content-item { display: inline; } /* IE6 float double margin bug */
 .scroll-bar-wrap { clear: left; padding: 0 4px 0 2px; margin: 0 -1px -1px -1px; }
