@@ -175,7 +175,7 @@ $(document).ready(function() {
 
 		console.log(imgstr);
 
-		$('<li></li>').html('<div class = "trailItem" id="' + x[i].title._content + '"><img src="'+imgstr+'" height="100" width="100" style=""><a href="#" id='+x[i].id+' type="set" style="float:right">'+ x[i].title._content +'</a></div>') 
+		$('<li></li>').html('<div class = "trailItem" id="' + x[i].title._content + '"><a><img src="'+imgstr+'" height="100" width="100" style=""></a><a href="#" id='+x[i].id+' type="set" style="float:right">'+ x[i].title._content +'</a></div>') 
 		.appendTo('#sets ul')			
 		};
 	});	
