@@ -13,6 +13,16 @@ var currentTrail;
 
 // Make img tags clickable
 
+$('.tagItem a').live('click', function(event) {		 
+		alert("monkey business");
+		var data_id = $(this).attr("data-id");
+		$('<div class="tag-zone" id="' + data_id + '"></div>') 
+		.appendTo('#content-right');
+		
+			
+});
+
+
 $('img').live('click',function(event){
 var setid = $(this).attr('id');
 var type = $(this).attr('type');
@@ -44,7 +54,6 @@ function deleteImage( $item ) {
         }
 
 $(function() {
-        // there's the gallery and the trash
 
 		// let the trash be droppable, accepting the gallery items
         $trash.droppable({
@@ -65,7 +74,7 @@ $(function() {
 		
 });
 
-alert(type);
+alert("type alert");
 if(type == "set")
 {
 
@@ -110,13 +119,10 @@ return false;
 
 
 $(document).ready(function() {
-    // Load trailmaster for the specified user when the #get-trails form is submitted
-    
-
     //get suggestive tags
 	$('#gettags').click(function(event){
 	
-	$('#trails ul').empty();
+	$('#tag-finder ul').empty();
 	var tag = $('#tag').val();
 	alert(tag);
 	var flickurl = 	'http://api.flickr.com/services/rest/?method=flickr.tags.getRelated&api_key=69ec61b6e4a407a91eb6946b224cb0e1&tag='+tag+'&format=json&nojsoncallback=1';
@@ -131,10 +137,13 @@ $(document).ready(function() {
 			limit = x.length;
 		}
 		for (var i = 0; i < limit; i++) {
-		$('<li></li>').html('<div class = "trailItem" id="' + x[i]._content + '"> <a href="#" >'+ x[i]._content +'</a></div>') // slice out the "tags:" portion of each tag
-		.appendTo('#trails ul');				
+		// slice out the "tags:" portion of each tag
+		$('<li></li>').html('<div class = "tagItem"> <a href="#" data-id="' + x[i]._content + '">'+ x[i]._content +'</a></div>') 
+		.appendTo('#tag-finder ul');				
 		};
 		console.log(data);
+		
+		
 	});	
 
 	return false;
@@ -142,10 +151,9 @@ $(document).ready(function() {
 
 	//get sets of a user 
 	$('#getsets').click(function(event){
+		$('#sets ul').empty();
 	
-	$('#sets ul').empty();
-	
-	var flickurl = 	'http://api.flickr.com/services/rest/?method=flickr.photosets.getList&api_key=69ec61b6e4a407a91eb6946b224cb0e1&user_id=18727743@N00&format=json&nojsoncallback=1';
+		var flickurl = 	'http://api.flickr.com/services/rest/?method=flickr.photosets.getList&api_key=69ec61b6e4a407a91eb6946b224cb0e1&user_id=18727743@N00&format=json&nojsoncallback=1';
 	var x = $.getJSON(flickurl,function(data,status){
 //		alert("callback");
 		alert(data.stat);

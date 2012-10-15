@@ -56,12 +56,13 @@ vertical-align: top;
 		}
 
 #content-right{
-		max-height: auto;
-		min-height: 400px;
-		width: 200px;
+		height: 400px;
+		width: 230px;
 		float: left;	
 		background: #AAAAAA;
 		padding-left: 10px;
+		overflow-y: scroll;
+		overflow-x: hidden;
 		}
 		
 
