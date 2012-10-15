@@ -17,6 +17,16 @@
     <!-- In addition to jQuery, we also need the Google Maps API v3 script -->
     <!-- Be sure to set the sensor variable as per your use case. -->
     <!-- If you're using W3C Geolocation, sensor=true -->
+    <style type="text/css">
+		.tag-zone {
+			width: 190px;
+			height: 190px;	
+			background-color: #999999;
+			margin-bottom: 20px;
+			overflow-y: scroll;
+			overflow-x: hidden;
+		}
+	</style>
 	</head>	
 
 <body>
@@ -83,7 +93,12 @@
         	<p>The Map</p>
         	<input type="button" id="locate" value="Locate Me"/>
         	<div id="map_canvas"></div>-->
+            <h2>Tags</h2>
+            <div class="tag-zone">
+            </div>
             
+            <div class="tag-zone">
+            </div>
 	</div>
 </div>
 	

@@ -24,7 +24,7 @@ $('a').live('click',function(event){
 var setid = $(this).attr('id');
 var type = $(this).attr('type');
 
-var $trash = $( "#content-right" );
+var $trash = $( ".tag-zone" );
 	$trashItem = $( ".scroll-content-item");
 
 function deleteImage( $item ) {
@@ -36,6 +36,7 @@ function deleteImage( $item ) {
                 $item.find( "a.ui-icon-trash" ).remove();
                 $item.appendTo( $list ).fadeIn(function() {
                     $item
+						.animate( {width: "40px", height: "40px" })
                         .find( "img" )
 						.animate({ width: "40px", height: "40px" })
                 });
@@ -98,13 +99,6 @@ for (var i = 0; i < pics.length; i++) {
                 recycleImage( ui.draggable );
             }
         });
-		/*.draggable({
-			cursor:"move", 
-			cursorAt:{top:50, left:50}, 
-			connectToSortable: "#content-right",
-			revert:"invalid",
-			scroll:false
-			});	*/
 	}
 
 });
