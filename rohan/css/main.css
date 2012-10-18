@@ -1,3 +1,5 @@
+
+
 body {
 	background: #FFFFFF;
 	font-family: "Avenir", "Droid Sans", "Segoe UI", Helvetica, Arial, sans-serif;
@@ -104,9 +106,13 @@ overflow:auto
 
 #content-tags{
 width: 300px;
+height: 300px;
 margin: 20px 0 0 0;
 float: left;
 border: 0px dotted #222;
+list-style: none;
+overflow: auto;
+
 }		
 
 
@@ -202,4 +208,72 @@ input#username {width: 200px;}
 ul.gallery {
 	margin:0;
 	padding:0;
+}
+
+#tag-finder {
+width: 100%;
+height: 100%;	
+overflow: auto;
+}
+
+#tag-finder ul{
+list-style: none;
+float:left;
+}
+
+#tag-finder li{
+list-style: none;
+float:left;
+margin: .5em;
+}
+
+#tag-finder a{
+    background:#eee;
+    text-decoration:none;
+    color:#333;
+    font-family:Arial, sans-serif;
+    font-size:11px;
+    font-weight:bold;
+    padding:3px 5px;
+    border:1px solid #aaa;
+    border-radius:3px;
+    cursor:default;
+    padding:0.2em 0.6em;
+}
+
+#tag-finder a:hover {
+    background-color:#f2f2f2;
+    border-color:#888;
+    box-shadow:0 0 2px #ccc;
+}
+
+.uibutton {
+    position: relative;
+    z-index: 1;
+    overflow: visible;
+    display: inline-block;
+    padding: 0.3em 0.6em 0.375em;
+    border: 1px solid #999;
+    border-bottom-color: #888;
+    margin: 0;
+    text-decoration: none;
+    text-align: center;
+    font: bold 11px/normal 'lucida grande', tahoma, verdana, arial, sans-serif;
+    white-space: nowrap;
+    cursor: pointer;
+    /* outline: none; */
+    color: #333;
+    background-color: #eee;
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f5f6f6), to(#e4e4e3));
+    background-image: -moz-linear-gradient(#f5f6f6, #e4e4e3);
+    background-image: -o-linear-gradient(#f5f6f6, #e4e4e3);
+    background-image: linear-gradient(#f5f6f6, #e4e4e3);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#f5f6f6', EndColorStr='#e4e4e3'); /* for IE 6 - 9 */
+    -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1), inset 0 1px 0 #fff;
+    -moz-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1), inset 0 1px 0 #fff;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1), inset 0 1px 0 #fff;
+    /* IE hacks */
+    zoom: 1;
+    *display: inline;
+    background-color: #3b5998 ;
 }

@@ -138,11 +138,10 @@ $(document).ready(function() {
 		}
 		for (var i = 0; i < limit; i++) {
 		// slice out the "tags:" portion of each tag
-		$('<li></li>').html('<div class = "tagItem"> <a href="#" data-id="' + x[i]._content + '">'+ x[i]._content +'</a></div>') 
+		$('<li></li>').html('<div class = "tagItem"> <a href="#" data-id="' + x[i]._content + '"class= "uibutton"># '+ x[i]._content +'</a></div>') 
 		.appendTo('#tag-finder ul');				
 		};
 		console.log(data);
-		
 		
 	});	
 
