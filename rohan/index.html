@@ -19,7 +19,7 @@
     <!-- If you're using W3C Geolocation, sensor=true -->
     <style type="text/css">
 		.tag-zone {
-			width: 190px;
+			width: 230px;
 			height: 150px;	
 			background-color: #999999;
 			margin-bottom: 20px;
@@ -74,19 +74,8 @@
 
 	<div id="content-tagscustom">
 		something
-	</div>
-
-	<div id="content-tags">
-
-			<input type="text" name="tag" id="tag"/>
-			<input type="button" id="gettags" value="Suggest Tags"/> <br>
-
-			<div id="tag-finder">
-				<ul>
-				</ul>
-			</div>
-		</div>		
-	</div>
+	</div>		
+</div>
 		
 	<div id="content-right">
         <!-- This text might look like just a nicety, but it's required by the spec. Help users to expect promises of privacy on the Web. 
@@ -94,11 +83,17 @@
         	<input type="button" id="locate" value="Locate Me"/>
         	<div id="map_canvas"></div>-->
             <h2>Tags</h2>
-            <div class="tag-zone">
-            </div>
            
 	</div>
-</div>
+    <div id="content-tags">
+		<input type="text" name="tag" id="tag"/>
+		<input type="button" id="gettags" value="Suggest Tags"/> <br>
+
+		<div id="tag-finder">
+			<ul>
+			</ul>
+		</div>
+	</div>
 	
 </div>
 </body>

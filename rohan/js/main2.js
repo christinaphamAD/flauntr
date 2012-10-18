@@ -16,7 +16,7 @@ var currentTrail;
 $('.tagItem a').live('click', function(event) {		 
 		alert("monkey business");
 		var data_id = $(this).attr("data-id");
-		$('<div class="tag-zone" id="' + data_id + '"></div>') 
+		$('<div class="tag-zone" id="' + data_id + '"><h3>' + data_id + '</h3></div>') 
 		.appendTo('#content-right');
 		
 			

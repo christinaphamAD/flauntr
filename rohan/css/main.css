@@ -1,7 +1,7 @@
 body {
 	background: #FFFFFF;
 	font-family: "Avenir", "Droid Sans", "Segoe UI", Helvetica, Arial, sans-serif;
-	font-size: 1em;
+	font-size: 14px;
 	color: #222;
 }
 
@@ -13,6 +13,9 @@ img {
 
 h1{margin: 0px 0px; padding: 0;}
 h2{margin: 15px 0px 5px 0px; padding: 0; font-size: 1.2em;}
+h3{
+	margin:0; font-size: 1.2;
+}
 p{margin: 0px 0px; padding: 0;}
 
 table tr td {
@@ -56,8 +59,8 @@ vertical-align: top;
 		}
 
 #content-right{
-		height: 400px;
-		width: 230px;
+		height: 380px;
+		width: 250px;
 		float: left;	
 		background: #AAAAAA;
 		padding-left: 10px;
@@ -100,10 +103,8 @@ overflow:auto
 }		
 
 #content-tags{
-
-margin: 10px 10 px 10 px 10 px;
-width: 440px;
-height: 30%;
+width: 300px;
+margin: 20px 0 0 0;
 float: left;
 border: 0px dotted #222;
 }		
@@ -178,7 +179,7 @@ a:visited {text-decoration: underline; color: #247b01;}
 a:hover {text-decoration: underline; color: #888;}
 a:active {text-decoration: underline; color: #666;}
 
-input {font-size: 1em; margin: 0px; padding: 8px; border: 1px solid #222;}
+input {font-size: .9em; margin: 0px; padding: 8px; border: 1px solid #222;}
 
 input#username {width: 200px;}
 
