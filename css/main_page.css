@@ -52,7 +52,7 @@ li{
 
 a{
     text-decoration: none;
-    color:#fff; 
+    color:rgba(0, 99, 220, 0.68); 
 }
 
 #albumscroller{
@@ -98,5 +98,69 @@ a{
         margin-left: 15px;
         margin-right: 15px;
         float: left;
-        overflow:scroll;
+        overflow:auto;
         }
+
+
+.scroll-content-item { width: 100px; height: 100px; float: left; margin: 10px; text-align: center; }
+
+#content-right{
+    height: 380px;
+    width: 250px;
+    float: left;    
+    background: rgba(0, 99, 220, 0.68);
+    padding-left: 10px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    border-radius:15px;
+}
+
+.tagheads{
+    color: white;
+    text-shadow: 0px 1px 0px rgba(255,255,255,.3), 0px -1px 0px rgba(0,0,0,.7);    
+}
+
+#content-tags{
+width: 300px;
+height: 300px;
+margin: 20px 0 0 0;
+float: left;
+border: 0px dotted #222;
+list-style: none;
+overflow: auto;
+
+}   
+
+#tag-finder {
+color:rgba(0, 99, 220, 0.68);
+width: 100%;
+height: 100%;   
+overflow: auto;
+clear:both;
+}
+
+.tag-zone {
+    width: 230px;
+    height: 150px;  
+    background-color: rgba(0, 99, 220, 0.68);
+    margin-bottom: 20px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    border-radius:15px;
+}        
+
+/*.scroll-pane { overflow: auto; width: 99%; float:left; }
+.scroll-content { max-width:1200px; min-width: 100%; float: left; height: 400px; overflow-x:auto; overflow-y:scroll }*/
+
+
+/* * html .scroll-content-item { display: inline; } /* IE6 float double margin bug * / 
+.scroll-bar-wrap { clear: left; padding: 0 4px 0 2px; margin: 0 -1px -1px -1px; }
+.scroll-bar-wrap .ui-slider { background: none; border:0; height: 2em; margin: 0 auto;  }
+.scroll-bar-wrap .ui-handle-helper-parent { position: relative; width: 100%; height: 100%; margin: 0 auto; }
+.scroll-bar-wrap .ui-slider-handle { top:.2em; height: 1.5em; }
+.scroll-bar-wrap .ui-slider-handle .ui-icon { margin: -8px auto 0; position: relative; top: 50%; }  
+
+.scroll
+
+
+
