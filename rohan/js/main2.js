@@ -16,7 +16,7 @@ var currentTrail;
 $('.tagItem a').live('click', function(event) {		 
 		alert("monkey business");
 		var data_id = $(this).attr("data-id");
-		$('<div class="tag-zone" id="' + data_id + '"><h3>' + data_id + '</h3></div>') 
+		$('<div class="tag-zone" id="' + data_id + '"><h3 class="tagzonename">#' + data_id + '</h3></div>') 
 		.appendTo('#content-right');
 		
 			
@@ -115,6 +115,11 @@ for (var i = 0; i < pics.length; i++) {
 
 }
 return false;
+});
+
+//Try make tag_getter respond on return [David]
+$("#tag_getter").live('keypress',function() {
+  alert("Handler for .keypress() called.");
 });
 
 

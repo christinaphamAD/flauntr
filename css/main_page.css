@@ -9,6 +9,12 @@
     margin: 0;
 }
 
+img {
+    padding: 1px;
+    border: 1px solid rgba(0, 99, 220, 0.68);
+    background-color: #FFF;
+}
+
 body{
     font-family:Helvetica, Arial, sans-serif;
     margin: 0px;
@@ -19,6 +25,7 @@ body{
     float:right;
     width:25%;
     margin-top:20px;
+    
 }
 
 #logo{
@@ -30,8 +37,10 @@ body{
 }
 
 #headbanner {
+    padding-left:15px;
+    padding-top:10px;
     width:100%;
-    background-color:#CCC;
+    background-color:#FFF;
     height:70px;
 }
 
@@ -55,14 +64,48 @@ a{
     color:rgba(0, 99, 220, 0.68); 
 }
 
-#albumscroller{
+#albumscrollerwrapper{
+    width:600px;
+    height:200px;
     float:left;
+    clear:both;
+    margin-left:20px;
+}
+#albumscroller{
+    width:600px;
+    height:145px;
+    float:left;
+    clear:both;
+    border:5px;
+    border-color:rgba(0, 99, 220, 0.68);
+    border-style:solid;
+    border-radius:100px;
+}
+
+#albumtab{
+    background-color:rgba(0, 99, 220, 0.68);
+    color:white;
+    width:70px;
+    text-align:center;
+    margin-left:78px;
+    text-shadow: 0px 1px 0px rgba(255,255,255,.3), 0px -1px 0px rgba(0,0,0,.7);  
+    border-top-left-radius:10px;
+    border-top-right-radius:10px;  
+}
+
+#sets{
+    margin-top:10px;
+    margin-left:32px;
+}
+
+.trailItem{
+    margin-right:10px;
 }
 
 #davidbutton{
     /*basic styles*/
-    width: 95px;  height: 20px;  color: white; background-color: #0063DC;
-    text-align: center;  font-size: 10px; line-height:20px;
+    width: 95px;  height: 15px;  color: white; background-color: rgba(0, 99, 220, 0.68);
+    text-align: center;  font-size: 10px;
     margin-left:auto;
     margin-right:auto;
     clear:both;
@@ -85,7 +128,7 @@ a{
 
 #content-gallery {
         /*margin: 10px 10px 10px 10px;*/
-        width: 440px;
+        width: 600px;
         height: 400px;
     /*  padding: 25px;
         border: 1px dotted #222;*/
@@ -104,9 +147,14 @@ a{
 
 .scroll-content-item { width: 100px; height: 100px; float: left; margin: 10px; text-align: center; }
 
+#content-left{
+    float:left;
+}
+
 #content-right{
-    height: 380px;
+    height: 600px;
     width: 250px;
+    margin-left:15px;
     float: left;    
     background: rgba(0, 99, 220, 0.68);
     padding-left: 10px;
@@ -117,7 +165,18 @@ a{
 
 .tagheads{
     color: white;
-    text-shadow: 0px 1px 0px rgba(255,255,255,.3), 0px -1px 0px rgba(0,0,0,.7);    
+    margin-top:4px;
+    margin-left:3px;
+    margin-bottom:3px;
+    text-shadow: 0px 1px 0px rgba(255,255,255,.3), 0px -1px 0px rgba(0,0,0,.7);
+    float:left;    
+}
+
+#tag_getter{
+    float:left;
+    margin-top:9px;
+    margin-left:13px;
+    margin-bottom:3px;
 }
 
 #content-tags{
@@ -141,12 +200,22 @@ clear:both;
 
 .tag-zone {
     width: 230px;
-    height: 150px;  
+    height: 170px;  
     background-color: rgba(0, 99, 220, 0.68);
     margin-bottom: 20px;
     overflow-y: scroll;
     overflow-x: hidden;
     border-radius:15px;
+}
+
+.tagzonename{
+    color:#FFF;
+    text-shadow: 0px 1px 0px rgba(255,255,255,.3), 0px -1px 0px rgba(0,0,0,.7);    
+    font-family: "American Typewriter", Courier, "Courier New", monospace;
+    font-weight:100;
+    font-size: 1em;
+    margin-left:18px;
+    margin-top:5px;
 }        
 
 /*.scroll-pane { overflow: auto; width: 99%; float:left; }
