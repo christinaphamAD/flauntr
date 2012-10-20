@@ -1,28 +1,11 @@
-// Declare a variable 'delicious' as the main array to store Delicious json data
-var delicious = [];
-// Declare a variable 'trailList' to store list of trails
-var trailList = [];
-// Counter for number of total steps in the trail
-var totalSteps = 0;
-// Counter to track the current step to be displayed
-var currentStep = 1;
-// Variable to track current trail
-var currentTrail;
-// Variable for initial tag holding
-// var tags = [];
-
-// Make img tags clickable
-
+// This will create the divs that are "tag-zones"
 $('.tagItem a').live('click', function(event) {		 
-		
 		var data_id = $(this).attr("data-id");
 		$('<div class="tag-zone" id="' + data_id + '"><h3 class="tagzonename">#' + data_id + '</h3></div>') 
 		.appendTo('#content-right');
-		
-			
 });
 
-
+// img tags are clickable
 $('img').live('click',function(event){
 var setid = $(this).attr('id');
 var type = $(this).attr('type');
@@ -34,18 +17,21 @@ var setid = $(this).attr('id');
 var type = $(this).attr('type');
 
 // variables assigned to the tag-zone divs and each individual image
-var $trash = $( ".tag-zone" );
-	$trashItem = $( ".scroll-content li");
+var $tagZone = $( ".tag-zone" );
+	$photo = $( ".scroll-content li");
 
 // Function for when the images are added to the tag-zone
-function deleteImage( $item, $dest ) {
-         
-                var $list = $( "ul", $dest ).length ?
-                    $( "ul", $dest ) :
-                    $( "<ul class='gallery ui-helper-reset'/>" ).appendTo( $dest );
+/* Source Code partially added from jQuery Photo Manager demo: 
+	http://jqueryui.com/droppable/#photo-manager */
+function addToZone( $item, $dest ) {
+         var $list = $( "ul", $dest ).length ?
+         	$( "ul", $dest ) :
+			// Add the draggable photo into the destination that it's dropped into
+            $( "<ul class='gallery ui-helper-reset'/>" ).appendTo( $dest );
 				if($list.find('li[data-id="' + $item.data("id") + '"]').length > 0) {
 					return False
 				}
+				// This will create a clone of the image that's being dragged
 				var $clone = $item.clone();
 				$clone.removeClass("ui-beingdragged")
 					.appendTo( $list ).hide().fadeIn(function() {
@@ -59,16 +45,14 @@ function deleteImage( $item, $dest ) {
         }
 
 $(function() {
-
 		// let the buckets be droppable, accepting the gallery items
-        $trash.droppable({
-            //accept: ".scroll-content li",
+        $tagZone.droppable({
 			accept: function($item) {
            		return ($item.parent().hasClass("gallery") && $(this).find('li[data-id="'+$item.data("id")+'"]').length <= 0);
        		},
             activeClass: "ui-state-highlight",
             drop: function( event, ui ) {
-                deleteImage( ui.draggable, $(this) )
+                addToZone( ui.draggable, $(this) )
             }
         });
 		
