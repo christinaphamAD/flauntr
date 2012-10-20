@@ -16,10 +16,10 @@ var currentTrail;
 $('.tagItem a').live('click', function(event) {		 
 		
 		var data_id = $(this).attr("data-id");
-		$('<div class="tag-zone" id="' + data_id + '"><h3 class="tagzonename">#' + data_id + '</h3></div>') 
-		.appendTo('#content-right');
-		
-			
+		$('<div class="tag-zone" style="display: none;" id="' + data_id + '"><h3 class="tagzonename">#' + data_id + '</h3></div>') 
+		.appendTo('#content-right').slideDown('slow',function(){
+			//Animation complete.
+		});						
 });
 
 
@@ -69,7 +69,7 @@ $(function() {
 		
 });
 
-alert("type alert");
+//alert("type alert");
 if(type == "set")
 {
 
