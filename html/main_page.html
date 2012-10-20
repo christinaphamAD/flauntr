@@ -116,8 +116,17 @@ $('#tag-finder ul').empty();
 				// This will create the divs that are "tag-zones"
 				var data_id = ui.item.value;
 				$('<div class="tag-zone" id="' + data_id + '"><h3 class="tagzonename">#' + data_id + '</h3></div>') 
-					.appendTo('#content-right');
-		
+					.appendTo('#content-right')
+					.droppable({
+						// This will check to see if there are duplicates
+						accept: function($item) {
+    					return ($item.parent().hasClass("gallery") && $(this).find('li[data-id="'+$item.data("id")+'"]').length <= 0);
+       					},
+						// This actually handles the ability for our tag-zone to accept photos
+        				drop: function( event, ui ) {
+        					addToZone( ui.draggable, $(this) )
+						}
+					})
                 /*log( ui.item ?
                     "Selected: " + ui.item.label :
                     "Nothing selected, input was " + this.value);*/

@@ -1,23 +1,6 @@
 
-
-// img tags are clickable
-$('img').live('click',function(event){
-	var setid = $(this).attr('id');
-	var type = $(this).attr('type');
-});
-
-/*http://farm{farm-id}.staticflickr.com/{server-id}/{id}_{secret}.jpg (formula for flickr url images)*/
-$('a').live('click',function(event){
-	var setid = $(this).attr('id');
-	var type = $(this).attr('type');
-
-// variables assigned to the tag-zone divs and each individual image
-	var $tagZone = $( ".tag-zone" );
 		$photo = $( ".scroll-content li");
 
-// Function for when the images are added to the tag-zone
-/* Source Code partially added from jQuery Photo Manager demo: 
-	http://jqueryui.com/droppable/#photo-manager */
 function addToZone( $item, $dest ) {
         var $list = $( "ul", $dest ).length ?
          	$( "ul", $dest ) :
@@ -40,18 +23,27 @@ function addToZone( $item, $dest ) {
 			}
 
 // This function will handle the tag-zones accepting photos
-$(function() {
-	$tagZone.droppable({
-		// This will check to see if there are duplicates
-		accept: function($item) {
-    		return ($item.parent().hasClass("gallery") && $(this).find('li[data-id="'+$item.data("id")+'"]').length <= 0);
-       	},
-		// This actually handles the ability for our tag-zone to accept photos
-        drop: function( event, ui ) {
-        	addToZone( ui.draggable, $(this) )
-		}
-	});
+
+
+// img tags are clickable
+$('img').live('click',function(event){
+	var setid = $(this).attr('id');
+	var type = $(this).attr('type');
 });
+
+/*http://farm{farm-id}.staticflickr.com/{server-id}/{id}_{secret}.jpg (formula for flickr url images)*/
+$('a').live('click',function(event){
+	
+	var setid = $(this).attr('id');
+	var type = $(this).attr('type');
+
+// variables assigned to the tag-zone divs and each individual image
+	
+
+// Function for when the images are added to the tag-zone
+/* Source Code partially added from jQuery Photo Manager demo: 
+	http://jqueryui.com/droppable/#photo-manager */
+
 
 alert("type alert");
 
