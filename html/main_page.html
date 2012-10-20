@@ -4,11 +4,16 @@
 <html>
 	<head>
 		<link rel="stylesheet" type="text/css" href="../css/main_page.css" />
+		<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 		<script type="text/javascript" src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
-
- <!--Custom Script-->
-        <script src="../rohan/js/main3.js"></script>
+		
+ 		<!--Custom Script-->
+        <script src="../rohan/js/main_christina.js"></script>
+        <style type="text/css">
+		
+		</style>
+		
 	</head>
 	<body>
 		<div id="headbanner">
@@ -17,13 +22,13 @@
 		</div>
 		<div id="content-left">
 			<div id="content-gallery">
-				<div class="scroll-pane ui-widget ui-widget-header ui-corner-all">
+				<div class="scroll-pane">
 	    			<div class="scroll-content">
-	        			<div class="scroll-content-item ui-widget-header">
+	        			<div class="scroll-content-item">
 							CLICK ON SETS TO RETRIEVE IMAGES
 						</div>
 	            	</div>
-	        		<div class="scroll-bar-wrap ui-widget-content ui-corner-bottom">
+	        		<div class="scroll-bar-wrap">
 	       				<div class="scroll-bar">
 	            		</div>
 	            	</div>
@@ -46,9 +51,7 @@
     	<input type="button" id="locate" value="Locate Me"/>
     	<div id="map_canvas"></div>-->
         	<h2 class = "tagheads">Tags</h2>
-        	<input type="text" id="tag_getter"/>
-		</div>
-		<div id="content-tags">
+        	<div id="content-tags">
 			<input type="text" name="tag" id="tag"/>
 			<input type="button" id="gettags" value="Suggest Tags"/> <br>
 			<div id="tag-finder">
@@ -56,5 +59,80 @@
 				</ul>
 			</div>
 		</div>
+		</div>
+		
 	</body>
+	<script>
+    $(function() {
+        function log( message ) {
+            $( "<div>" ).text( message ).prependTo( "#log" );
+            $( "#log" ).scrollTop( 0 );
+        }
+        
+$('#tag-finder ul').empty();
+        $( "#tag" ).autocomplete({
+        
+            source: function( request, response ) {
+                var tagtext = $('#tag').val();
+                var url = tagtext;
+
+        $.ajax({
+         url: "http://api.flickr.com/services/rest/?method=flickr.tags.getRelated&api_key=69ec61b6e4a407a91eb6946b224cb0e1&tag="+tagtext+"&format=json&nojsoncallback=1",
+        dataType: "json", 
+        success: function( data ) {
+          //  console.log(data);
+          //  console.log(url);
+
+
+          var count = 0;
+          var arr = data.tags.tag; 
+          var arr1 = arr.slice(0,10);
+          response( $.map(arr1, function(item) {
+                count++;
+                if(count>1)
+                {
+
+                return {
+                        
+                        label: item._content,
+                        value: item._content
+                        //label: item.name + (item.adminName1 ? ", " + item.adminName1 : "") + ", " + item.countryName,
+                        //value: item.name
+
+                        }
+                 } else
+                  {return {
+                   label: tagtext ,
+                   value: tagtext
+                  }
+
+                  }       
+                    }));
+                   }
+                });
+            },
+            minLength: 2,
+            select: function( event, ui ) {
+				// This will create the divs that are "tag-zones"
+				var data_id = ui.item.value;
+				$('<div class="tag-zone" id="' + data_id + '"><h3 class="tagzonename">#' + data_id + '</h3></div>') 
+					.appendTo('#content-right');
+		
+                /*log( ui.item ?
+                    "Selected: " + ui.item.label :
+                    "Nothing selected, input was " + this.value);*/
+       //     alert("selected !");
+            },
+            open: function() {
+                $( this ).removeClass( "ui-corner-all" ).addClass( "ui-corner-top" );
+         //   alert("open");
+            },
+            close: function() {
+                $( this ).removeClass( "ui-corner-top" ).addClass( "ui-corner-all" );
+            }
+        });
+    });
+
+
+    </script>
 </html>

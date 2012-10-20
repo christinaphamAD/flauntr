@@ -1,9 +1,4 @@
-// This will create the divs that are "tag-zones"
-$('.tagItem a').live('click', function(event) {		 
-		var data_id = $(this).attr("data-id");
-		$('<div class="tag-zone" id="' + data_id + '"><h3 class="tagzonename">#' + data_id + '</h3></div>') 
-		.appendTo('#content-right');
-});
+
 
 // img tags are clickable
 $('img').live('click',function(event){
@@ -24,7 +19,7 @@ $('a').live('click',function(event){
 /* Source Code partially added from jQuery Photo Manager demo: 
 	http://jqueryui.com/droppable/#photo-manager */
 function addToZone( $item, $dest ) {
-         var $list = $( "ul", $dest ).length ?
+        var $list = $( "ul", $dest ).length ?
          	$( "ul", $dest ) :
 			// Add the draggable photo into the destination that it's dropped into
             $( "<ul class='gallery ui-helper-reset'/>" ).appendTo( $dest );
@@ -51,7 +46,6 @@ $(function() {
 		accept: function($item) {
     		return ($item.parent().hasClass("gallery") && $(this).find('li[data-id="'+$item.data("id")+'"]').length <= 0);
        	},
-        activeClass: "ui-state-highlight",
 		// This actually handles the ability for our tag-zone to accept photos
         drop: function( event, ui ) {
         	addToZone( ui.draggable, $(this) )
@@ -79,7 +73,7 @@ if(type == "set") {
 		imgurl = "http://farm"+pics[i].farm+".staticflickr.com/"+pics[i].server+"/"+pics[i].id+"_"+pics[i].secret+".jpg";
 		console.log("click"+imgurl);
 		// Create a list item with an image from the set
-		$('<li data-id="' + i + '"><div id="'+i+'" class="scroll-content-item ui-widget-header"><img src="'+imgurl+'" height="80" width="80"></div></li>')	
+		$('<li data-id="' + i + '"><div id="'+i+'" class="scroll-content-item"><img src="'+imgurl+'" height="80" width="80"></div></li>')	
 			.appendTo('.scroll-content ul')
 			// lets the gallery item be draggable
 			/* Source Code partially added from jQuery Photo Manager demo: 
