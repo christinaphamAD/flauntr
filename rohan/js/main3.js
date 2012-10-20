@@ -35,13 +35,12 @@ var setid = $(this).attr('id');
 var type = $(this).attr('type');
 
 var $trash = $( ".tag-zone" );
-	$trashItem = $( ".scroll-content-item");
+	$trashItem = $( ".scroll-content li");
 
 function deleteImage( $item, $dest ) {
             $item.fadeOut(function() {
                 var $list = $( "ul", $dest ).length ?
 		
-
                     $( "ul", $dest ) :
                     $( "<ul class='gallery ui-helper-reset'/>" ).appendTo( $dest );
  
@@ -49,6 +48,8 @@ function deleteImage( $item, $dest ) {
                 $item.appendTo( $list ).fadeIn(function() {
                     $item
 						.animate( {width: "40px", height: "40px" })
+						.find( "div" )
+						.animate({ width: "40px", height: "40px" })
                         .find( "img" )
 						.animate({ width: "40px", height: "40px" })
                 });
@@ -59,7 +60,7 @@ $(function() {
 
 		// let the trash be droppable, accepting the gallery items
         $trash.droppable({
-            accept: ".scroll-content > div",
+            accept: ".scroll-content li",
             activeClass: "ui-state-highlight",
             drop: function( event, ui ) {
                 deleteImage( ui.draggable, $(this) )
@@ -74,6 +75,7 @@ if(type == "set")
 {
 
 $('.scroll-content').empty();
+$('<ul></ul>').appendTo('.scroll-content');
 
 var url = "http://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key=69ec61b6e4a407a91eb6946b224cb0e1&photoset_id="+setid+"&format=json&nojsoncallback=1";
 
@@ -87,8 +89,8 @@ for (var i = 0; i < pics.length; i++) {
 
 		imgurl = "http://farm"+pics[i].farm+".staticflickr.com/"+pics[i].server+"/"+pics[i].id+"_"+pics[i].secret+".jpg";
 		console.log("click"+imgurl);
-		$('<div id="'+i+'" class="scroll-content-item ui-widget-header"><img src="'+imgurl+'" height="80" width="80"></div>')	
-		.appendTo('.scroll-content')
+		$('<li data-id="' + i + '"><div id="'+i+'" class="scroll-content-item ui-widget-header"><img src="'+imgurl+'" height="80" width="80"></div></li>')	
+		.appendTo('.scroll-content ul')
 		// lets the gallery item be draggable
 		.draggable({
             cancel: "a.ui-icon", // clicking an icon won't initiate dragging
