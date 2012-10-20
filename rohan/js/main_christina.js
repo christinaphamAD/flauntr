@@ -29,36 +29,38 @@ var type = $(this).attr('type');
 });
 
 /*http://farm{farm-id}.staticflickr.com/{server-id}/{id}_{secret}.jpg (formula for flickr url images)*/
-
 $('a').live('click',function(event){
 var setid = $(this).attr('id');
 var type = $(this).attr('type');
 
+// variables assigned to the tag-zone divs and each individual image
 var $trash = $( ".tag-zone" );
 	$trashItem = $( ".scroll-content li");
 
+// Function for when the images are added to the tag-zone
 function deleteImage( $item, $dest ) {
-            $item.fadeOut(function() {
+         
                 var $list = $( "ul", $dest ).length ?
-		
                     $( "ul", $dest ) :
                     $( "<ul class='gallery ui-helper-reset'/>" ).appendTo( $dest );
- 
-                $item.find( "a.ui-icon-trash" ).remove();
-                $item.appendTo( $list ).fadeIn(function() {
-                    $item
+				if($list.find('li[data-id="' + $item.data("id") + '"]').length > 0) {
+					return False
+				}
+				var $clone = $item.clone();
+				$clone.removeClass("ui-beingdragged")
+					.appendTo( $list ).hide().fadeIn(function() {
+                    $clone
 						.animate( {width: "40px", height: "40px" })
 						.find( "div" )
 						.animate({ width: "40px", height: "40px" })
                         .find( "img" )
 						.animate({ width: "40px", height: "40px" })
                 });
-            });
         }
 
 $(function() {
 
-		// let the trash be droppable, accepting the gallery items
+		// let the buckets be droppable, accepting the gallery items
         $trash.droppable({
             //accept: ".scroll-content li",
 			accept: function($item) {
@@ -100,7 +102,13 @@ for (var i = 0; i < pics.length; i++) {
             revert: "invalid", // when not dropped, the item will revert back to its initial position
             containment: "document",
             helper: "clone",
-            cursor: "move"
+            cursor: "move",
+			start: function() {
+				$(this).addClass("ui-being-dragged");
+			},
+			stop: function() {
+				$(this).removeClass("ui-being-dragged"); 
+			}
         })
 		
 	}
