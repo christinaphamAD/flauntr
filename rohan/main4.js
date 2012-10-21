@@ -38,14 +38,51 @@ $('a').live('click',function(event){
 	var type = $(this).attr('type');
 
 // variables assigned to the tag-zone divs and each individual image
-	
+alert("type is "+type);	
 
 // Function for when the images are added to the tag-zone
 /* Source Code partially added from jQuery Photo Manager demo: 
-	http://jqueryui.com/droppable/#photo-manager */
+	http://jqueryui.com/droppable/#photo-manager 
+	imgurl = "http://farm"+pics[i].farm+".staticflickr.com/"+pics[i].server+"/"+pics[i].id+"_"+pics[i].secret+".jpg"; static url for a flickr image
+	*/
+if(type=="photo")
+{
+
+var phid = $(this).attr('id');
+var urlphoto = "http://api.flickr.com/services/rest/?method=flickr.photos.getInfo&api_key=2a543b41a8b72358e2225ac45f9957e4&photo_id="+phid+"&format=json&nojsoncallback=1";
+console.log(urlphoto);
+	$.getJSON(urlphoto,function(data,status) {
+
+	$('#content-right-galleryimg').empty();
+	console.log(data);
+
+	var picurl = "http://farm"+data.photo.farm+".staticflickr.com/"+data.photo.server+"/"+data.photo.id+"_"+data.photo.secret+".jpg";
+	console.log("picurl"+picurl);
+	$('<div></div>').html('<img src="'+picurl+'" height="400" width="400">').appendTo('#content-right-galleryimg');
+	
+	var pictags= data.photo.tags.tag;
+	console.log(pictags);
+	alert(pictags.length);
+	for(i = 0;i<pictags.length;i++)
+	{
+		alert(pictags.length);
+
+	$('<li></li>').html('<div class = "tagItem"> <a href="#" class= "uibutton"># '+ pictags[i]._content +'</a></div>') 
+		.appendTo('#content-right-gallerytag ul');	
+
+	/*$('<li></li>').html('<div class = "tagItem"> <a href="#" data-id="' + x[i]._content + '"class= "uibutton"># '+ x[i]._content +'</a></div>') 
+		.appendTo('#tag-finder ul');*/
+
+	}
+	
+	//var comments = data.photo.comments;<TEXTAREA NAME="comments" COLS=30 ROWS=6></TEXTAREA>
 
 
-alert("type alert");
+});
+} //if ends
+
+
+
 
 if(type == "set") {
 	// Delete all of the contents inside the container that WILL hold the photos
@@ -56,6 +93,7 @@ if(type == "set") {
 	var url = "http://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key=69ec61b6e4a407a91eb6946b224cb0e1&photoset_id="+setid+"&format=json&nojsoncallback=1";
 
 	$.getJSON(url,function(data,status) {
+	console.log(data);
 	alert(data.stat);
 	var pics = data.photoset.photo;
 	var imgurl;
@@ -65,7 +103,7 @@ if(type == "set") {
 		imgurl = "http://farm"+pics[i].farm+".staticflickr.com/"+pics[i].server+"/"+pics[i].id+"_"+pics[i].secret+".jpg";
 		console.log("click"+imgurl);
 		// Create a list item with an image from the set
-		$('<li data-id="' + i + '"><div id="'+i+'" class="scroll-content-item"><img src="'+imgurl+'" height="80" width="80"></div></li>')	
+		$('<li data-id="' + i + '"><div id="'+i+'" class="scroll-content-item"><a type="photo" id="'+pics[i].id+'" src="#"><img src="'+imgurl+'" height="80" width="80"></a></div></li>')	
 			.appendTo('.scroll-content ul')
 			// lets the gallery item be draggable
 			/* Source Code partially added from jQuery Photo Manager demo: 

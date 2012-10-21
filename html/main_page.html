@@ -18,7 +18,7 @@
 	<body>
 		<div id="headbanner">
 			<div id= "logo">flaunt<span id="r">r</span></div>
-			<div id="auth"><a id="getsets"><div id="authbutton">Sign in via Yahoo</div></a></div>
+			<div id="auth"><a id="getsets"><div id="authbutton">GET SETS</div></a></div>
 		</div>
 		<div id="content-left">
 			<div id="content-gallery">
@@ -46,19 +46,31 @@
 			</div>
 		</div>		
 		<div id="content-right">
-    	<!-- This text might look like just a nicety, but it's required by the spec. Help users to expect promises of privacy on the Web. 
-    	<p>The Map</p>
-    	<input type="button" id="locate" value="Locate Me"/>
-    	<div id="map_canvas"></div>-->
-        	<h2 class = "tagheads">Tags</h2>
+    	   	<h2 class = "tagheads">Tag Zones</h2>
+
         	<div id="content-tags">
 			<input type="text" name="tag" id="tag"/>
-			<input type="button" id="gettags" value="Suggest Tags"/> <br>
-			<div id="tag-finder">
+      <br>
+			<!--<input type="button" id="gettags" value="Suggest Tags"/> 
+			<div id="tag-finder">-->
 				<ul>
 				</ul>
 			</div>
 		</div>
+<div id="content-right-gallery">
+        <h2 class = "tagheads">GALLERY</h2>  
+  <div id="content-right-galleryimg"></div>
+<div id="content-right-gallerytag">
+<ul>
+<li></li><br>
+ <ul> 
+  </div><br><br>
+<div id="content-right-gallerycomments">
+  
+</div>
+</div>
+
+
 		</div>
 		
 	</body>
@@ -115,8 +127,9 @@ $('#tag-finder ul').empty();
             select: function( event, ui ) {
 				// This will create the divs that are "tag-zones"
 				var data_id = ui.item.value;
-				$('<div class="tag-zone" id="' + data_id + '"><h3 class="tagzonename">#' + data_id + '</h3></div>') 
+				$('<div class="tag-zone" style="display: none;" id="' + data_id + '"><h3 class="tagzonename">#' + data_id + '</h3></div>') 
 					.appendTo('#content-right')
+          .slideDown('slow',function(){})
 					.droppable({
 						// This will check to see if there are duplicates
 						accept: function($item) {
