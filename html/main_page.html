@@ -58,15 +58,15 @@
 			</div>
 		</div>
 <div id="content-right-gallery">
-        <h2 class = "tagheads">GALLERY</h2>  
-  <div id="content-right-galleryimg"></div>
+        <h2>GALLERY</h2>  
+  <div id="content-right-galleryimg"></div><br>
 <div id="content-right-gallerytag">  
 <ul>
 <li></li>
  <ul> 
   </div><br><br>
-<div id="content-right-gallerycomments">
-  
+<div id="tagtrash">
+  drop tags here !
 </div>
 </div>
 
@@ -74,87 +74,5 @@
 		</div>
 		
 	</body>
-	<script>
-    $(function() {
-        function log( message ) {
-            $( "<div>" ).text( message ).prependTo( "#log" );
-            $( "#log" ).scrollTop( 0 );
-        }
-        
-$('#tag-finder ul').empty();
-        $( "#tag" ).autocomplete({
-        
-            source: function( request, response ) {
-                var tagtext = $('#tag').val();
-                var url = tagtext;
-
-        $.ajax({
-         url: "http://api.flickr.com/services/rest/?method=flickr.tags.getRelated&api_key=69ec61b6e4a407a91eb6946b224cb0e1&tag="+tagtext+"&format=json&nojsoncallback=1",
-        dataType: "json", 
-        success: function( data ) {
-          //  console.log(data);
-          //  console.log(url);
-
-
-          var count = 0;
-          var arr = data.tags.tag; 
-          var arr1 = arr.slice(0,10);
-          response( $.map(arr1, function(item) {
-                count++;
-                if(count>1)
-                {
-
-                return {
-                        
-                        label: item._content,
-                        value: item._content
-                        //label: item.name + (item.adminName1 ? ", " + item.adminName1 : "") + ", " + item.countryName,
-                        //value: item.name
-
-                        }
-                 } else
-                  {return {
-                   label: tagtext ,
-                   value: tagtext
-                  }
-
-                  }       
-                    }));
-                   }
-                });
-            },
-            minLength: 2,
-            select: function( event, ui ) {
-				// This will create the divs that are "tag-zones"
-				var data_id = ui.item.value;
-				$('<div class="tag-zone" style="display: none;" id="' + data_id + '"><h3 class="tagzonename">#' + data_id + '</h3></div>') 
-					.appendTo('#content-right')
-          .slideDown('slow',function(){})
-					.droppable({
-						// This will check to see if there are duplicates
-						accept: function($item) {
-    					return ($item.parent().hasClass("gallery") && $(this).find('li[data-id="'+$item.data("id")+'"]').length <= 0);
-       					},
-						// This actually handles the ability for our tag-zone to accept photos
-        				drop: function( event, ui ) {
-        					addToZone( ui.draggable, $(this) )
-						}
-					})
-                /*log( ui.item ?
-                    "Selected: " + ui.item.label :
-                    "Nothing selected, input was " + this.value);*/
-       //     alert("selected !");
-            },
-            open: function() {
-                $( this ).removeClass( "ui-corner-all" ).addClass( "ui-corner-top" );
-         //   alert("open");
-            },
-            close: function() {
-                $( this ).removeClass( "ui-corner-top" ).addClass( "ui-corner-all" );
-            }
-        });
-    });
-
-
-    </script>
+	
 </html>
