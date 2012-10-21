@@ -123,7 +123,7 @@ $('a').live('click',function(event){
 	var type = $(this).attr('type');
 
 // variables assigned to the tag-zone divs and each individual image
-alert("type is "+type);	
+//alert("type is "+type);	
 
 // Function for when the images are added to the tag-zone
 /* Source Code partially added from jQuery Photo Manager demo: 
@@ -145,14 +145,15 @@ console.log(urlphoto);
 
 	var picurl = "http://farm"+data.photo.farm+".staticflickr.com/"+data.photo.server+"/"+data.photo.id+"_"+data.photo.secret+".jpg";
 	console.log("picurl"+picurl);
-	$('<div></div>').html('<img src="'+picurl+'" height="300" width="300">').appendTo('#content-right-galleryimg');
+	$('<img id = "gallerylarge" src="'+picurl+'" height="300" width="300">').appendTo('#content-right-galleryimg').hide().fadeIn(1000);
+
 	
 	var pictags= data.photo.tags.tag;
 	console.log(pictags);
-	alert(pictags.length);
+	//alert(pictags.length);
 	for(i = 0;i<pictags.length;i++)
 	{
-		alert(pictags.length);
+		//alert(pictags.length);
 
 	$('<li></li>').html('<div class="custom"> <a href="#"># '+ pictags[i]._content +'</a></div>') 
 		.appendTo('#content-right-gallerytag ul');	
@@ -185,13 +186,14 @@ if(type == "set") {
 	var pics = data.photoset.photo;
 	var imgurl;
 	// Generate the photos from each set
+	var d = 0;
 	for (var i = 0; i < pics.length; i++) {
 
 		imgurl = "http://farm"+pics[i].farm+".staticflickr.com/"+pics[i].server+"/"+pics[i].id+"_"+pics[i].secret+".jpg";
 		console.log("click"+imgurl);
 		// Create a list item with an image from the set
 		$('<li data-id="' + i + '"><div id="'+i+'" class="scroll-content-item"><a type="photo" id="'+pics[i].id+'" src="#"><img src="'+imgurl+'" height="80" width="80"></a></div></li>')	
-			.appendTo('.scroll-content ul')
+			.appendTo('.scroll-content ul').hide().delay(d).fadeIn()
 			// lets the gallery item be draggable
 			/* Source Code partially added from jQuery Photo Manager demo: 
 			http://jqueryui.com/droppable/#photo-manager */
@@ -208,6 +210,7 @@ if(type == "set") {
 					$(this).removeClass("ui-being-dragged"); 
 				}
         	})
+        d = d + 500;	
 		}
 
 	});
