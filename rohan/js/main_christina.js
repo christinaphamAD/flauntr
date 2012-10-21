@@ -96,18 +96,20 @@ function addToZone( $item, $dest ) {
 				}
 				// This will create a clone of the image that's being dragged
 				var $clone = $item.clone();
-				$clone.removeClass("ui-beingdragged")
-					.append(trash_icon)
-					.click(clickFnc)
-					.appendTo( $list )
-					.hide()
-					.fadeIn(function() {
-                    	$clone
-							.animate( {width: "40px", height: "40px" })
-							.find("div")
-							.animate({ width: "40px", height: "40px" })
-                        	.find("img")
-							.animate({ width: "40px", height: "40px" })
+					$clone
+						.removeClass("ui-beingdragged")
+						.addClass("taggedPhoto")
+						.click(clickFnc)
+						.appendTo( $list )
+						.hide()
+						.fadeIn(function() {
+                    		$clone
+								.animate( {width: "44px", height: "70px" })
+								.find("div")
+								.append(trash_icon)
+								.animate({ width: "40px", height: "40px" })
+                        		.find("img")
+								.animate({ width: "40px", height: "40px" })
                 	});
 			}
 
@@ -267,7 +269,7 @@ $(document).ready(function() {
 	$('#getsets').click(function(event){
 		$('#sets ul').empty();
 		
-		var userid = "88032686@N06";
+		var userid = "18727743@N00";
 		var flickurl = 	'http://api.flickr.com/services/rest/?method=flickr.photosets.getList&api_key=69ec61b6e4a407a91eb6946b224cb0e1&user_id='+userid+'&format=json&nojsoncallback=1';
 		var x = $.getJSON(flickurl,function(data,status){
 
