@@ -21,13 +21,7 @@ function addToZone( $item, $dest ) {
 							.animate({ width: "40px", height: "40px" })
                         	.find("img")
 							.animate({ width: "40px", height: "40px" })
-                	})
-					.draggable({
-						cancel: "a.ui-icon", // clicking an icon won't initiate dragging
-						containment: "document",
-            			cursor: "move",
-						zindex: 100,
-					})
+                	});
 			}
 
 // This function will handle the tag-zones accepting photos
