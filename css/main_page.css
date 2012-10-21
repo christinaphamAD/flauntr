@@ -366,3 +366,8 @@ clear:both;
 	overflow: auto;
 }
 
+.trash-icon {
+	background-position: -176px -100px !important;
+	height: 10px !important;
+}
+

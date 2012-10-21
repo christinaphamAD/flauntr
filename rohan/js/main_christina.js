@@ -83,7 +83,7 @@ $('#tag-finder ul').empty();
 
 
 $photo = $( ".scroll-content li");
-var trash_icon = "<a title='Delete this image' class='ui-icon ui-icon-trash'>Delete image</a>";
+var trash_icon = "<a title='Delete this image' class='ui-icon ui-icon-trash trash-icon'>Delete image</a>";
 
 // TFIX
 function addToZone( $item, $dest ) {
@@ -104,7 +104,7 @@ function addToZone( $item, $dest ) {
 						.hide()
 						.fadeIn(function() {
                     		$clone
-								.animate( {width: "44px", height: "70px" })
+								.animate( {width: "44px", height: "60px" })
 								.find("div")
 								.append(trash_icon)
 								.animate({ width: "40px", height: "40px" })
