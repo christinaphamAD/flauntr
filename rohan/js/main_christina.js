@@ -85,7 +85,6 @@ $('#tag-finder ul').empty();
 $photo = $( ".scroll-content li");
 var trash_icon = "<a title='Delete this image' class='ui-icon ui-icon-trash trash-icon'>Delete image</a>";
 
-// TFIX
 function addToZone( $item, $dest ) {
         var $list = $( "ul", $dest ).length ?
          	$( "ul", $dest ) :
@@ -144,6 +143,9 @@ $('a').live('click',function(event){
 	
 	var setid = $(this).attr('id');
 	var type = $(this).attr('type');
+
+// variables assigned to the tag-zone divs and each individual image
+alert("type is "+type);	
 
 // Function for when the images are added to the tag-zone
 /* Source Code partially added from jQuery Photo Manager demo: 
@@ -206,7 +208,7 @@ if(type == "set") {
 	var imgurl;
 	// Generate the photos from each set
 	for (var i = 0; i < pics.length; i++) {
-		//TFIX
+
 		imgurl = "http://farm"+pics[i].farm+".staticflickr.com/"+pics[i].server+"/"+pics[i].id+"_"+pics[i].secret+".jpg";
 		console.log("click"+imgurl);
 		// Create a list item with an image from the set
