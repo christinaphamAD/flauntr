@@ -53,7 +53,7 @@ $('#tag-finder ul').empty();
 				var data_id = ui.item.value;
 				$('<div class="tag-zone" style="display: none;" id="' + data_id + '"><h3 class="tagzonename">#' + data_id + '</h3></div>') 
 					.appendTo('#content-right')
-          .slideDown('slow',function(){})
+          			.slideDown('slow',function(){})
 					.droppable({
 						// This will check to see if there are duplicates
 						accept: function($item) {
@@ -83,6 +83,7 @@ $('#tag-finder ul').empty();
 
 
 $photo = $( ".scroll-content li");
+var trash_icon = "<a title='Delete this image' class='ui-icon ui-icon-trash trash-icon'>Delete image</a>";
 
 function addToZone( $item, $dest ) {
         var $list = $( "ul", $dest ).length ?
@@ -94,20 +95,41 @@ function addToZone( $item, $dest ) {
 				}
 				// This will create a clone of the image that's being dragged
 				var $clone = $item.clone();
-				$clone.removeClass("ui-beingdragged")
-					.appendTo( $list )
-					.hide()
-					.fadeIn(function() {
-                    	$clone
-							.animate( {width: "40px", height: "40px" })
-							.find("div")
-							.animate({ width: "40px", height: "40px" })
-                        	.find("img")
-							.animate({ width: "40px", height: "40px" })
+					$clone
+						.removeClass("ui-beingdragged")
+						.addClass("taggedPhoto")
+						.click(clickFnc)
+						.appendTo( $list )
+						.hide()
+						.fadeIn(function() {
+                    		$clone
+								.animate( {width: "44px", height: "60px" })
+								.find("div")
+								.append(trash_icon)
+								.animate({ width: "40px", height: "40px" })
+                        		.find("img")
+								.animate({ width: "40px", height: "40px" })
                 	});
 			}
 
-// This function will handle the tag-zones accepting photos
+// image deletion function
+function deleteImage( $icon, $item ) {
+	$icon.unbind("click");
+	$item.fadeOut(function(){
+		$item.remove();
+	});
+}
+
+// resolve the icons behavior with event delegation
+var clickFnc = function( event ) {
+	var $item = $( this ),
+		$target = $( event.target );
+		
+	if ( $target.is( "a.ui-icon-trash" ) ) {
+		deleteImage( $target, $item );
+	} 
+        return false;
+}
 
 
 // img tags are clickable
@@ -182,7 +204,7 @@ if(type == "set") {
 
 	$.getJSON(url,function(data,status) {
 	console.log(data);
-	alert(data.stat);
+	//alert(data.stat);
 	var pics = data.photoset.photo;
 	var imgurl;
 	// Generate the photos from each set
@@ -252,7 +274,7 @@ $(document).ready(function() {
 	$('#getsets').click(function(event){
 		$('#sets ul').empty();
 		
-		var userid = "88032686@N06";
+		var userid = "18727743@N00";
 		var flickurl = 	'http://api.flickr.com/services/rest/?method=flickr.photosets.getList&api_key=69ec61b6e4a407a91eb6946b224cb0e1&user_id='+userid+'&format=json&nojsoncallback=1';
 		var x = $.getJSON(flickurl,function(data,status){
 
