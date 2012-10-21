@@ -1,5 +1,88 @@
+    
+ $(function() {
+        function log( message ) {
+            $( "<div>" ).text( message ).prependTo( "#log" );
+            $( "#log" ).scrollTop( 0 );
+        }
+        
+$('#tag-finder ul').empty();
+        $( "#tag" ).autocomplete({
+        
+            source: function( request, response ) {
+                var tagtext = $('#tag').val();
+                var url = tagtext;
 
-		$photo = $( ".scroll-content li");
+        $.ajax({
+         url: "http://api.flickr.com/services/rest/?method=flickr.tags.getRelated&api_key=69ec61b6e4a407a91eb6946b224cb0e1&tag="+tagtext+"&format=json&nojsoncallback=1",
+        dataType: "json", 
+        success: function( data ) {
+          //  console.log(data);
+          //  console.log(url);
+
+
+          var count = 0;
+          var arr = data.tags.tag; 
+          var arr1 = arr.slice(0,10);
+          response( $.map(arr1, function(item) {
+                count++;
+                if(count>1)
+                {
+
+                return {
+                        
+                        label: item._content,
+                        value: item._content
+                        //label: item.name + (item.adminName1 ? ", " + item.adminName1 : "") + ", " + item.countryName,
+                        //value: item.name
+
+                        }
+                 } else
+                  {return {
+                   label: tagtext ,
+                   value: tagtext
+                  }
+
+                  }       
+                    }));
+                   }
+                });
+            },
+            minLength: 2,
+            select: function( event, ui ) {
+				// This will create the divs that are "tag-zones"
+				var data_id = ui.item.value;
+				$('<div class="tag-zone" style="display: none;" id="' + data_id + '"><h3 class="tagzonename">#' + data_id + '</h3></div>') 
+					.appendTo('#content-right')
+          .slideDown('slow',function(){})
+					.droppable({
+						// This will check to see if there are duplicates
+						accept: function($item) {
+    					return ($item.parent().hasClass("gallery") && $(this).find('li[data-id="'+$item.data("id")+'"]').length <= 0);
+       					},
+						// This actually handles the ability for our tag-zone to accept photos
+        				drop: function( event, ui ) {
+        					addToZone( ui.draggable, $(this) )
+						}
+					})
+                /*log( ui.item ?
+                    "Selected: " + ui.item.label :
+                    "Nothing selected, input was " + this.value);*/
+       //     alert("selected !");
+            },
+            open: function() {
+                $( this ).removeClass( "ui-corner-all" ).addClass( "ui-corner-top" );
+         //   alert("open");
+            },
+            close: function() {
+                $( this ).removeClass( "ui-corner-top" ).addClass( "ui-corner-all" );
+            }
+        });
+    });
+
+
+
+
+$photo = $( ".scroll-content li");
 
 function addToZone( $item, $dest ) {
         var $list = $( "ul", $dest ).length ?
@@ -51,7 +134,7 @@ if(type=="photo")
 {
 
 var phid = $(this).attr('id');
-var urlphoto = "http://api.flickr.com/services/rest/?method=flickr.photos.getInfo&api_key=2a543b41a8b72358e2225ac45f9957e4&photo_id="+phid+"&format=json&nojsoncallback=1";
+var urlphoto = "http://api.flickr.com/services/rest/?method=flickr.photos.getInfo&api_key=69ec61b6e4a407a91eb6946b224cb0e1&photo_id="+phid+"&format=json&nojsoncallback=1";
 console.log(urlphoto);
 	$.getJSON(urlphoto,function(data,status) {
 
@@ -62,7 +145,7 @@ console.log(urlphoto);
 
 	var picurl = "http://farm"+data.photo.farm+".staticflickr.com/"+data.photo.server+"/"+data.photo.id+"_"+data.photo.secret+".jpg";
 	console.log("picurl"+picurl);
-	$('<div></div>').html('<img src="'+picurl+'" height="400" width="400">').appendTo('#content-right-galleryimg');
+	$('<div></div>').html('<img src="'+picurl+'" height="300" width="300">').appendTo('#content-right-galleryimg');
 	
 	var pictags= data.photo.tags.tag;
 	console.log(pictags);
@@ -71,7 +154,7 @@ console.log(urlphoto);
 	{
 		alert(pictags.length);
 
-	$('<li></li>').html('<div class = "tagItem"> <a href="#" class= "uibutton"># '+ pictags[i]._content +'</a></div>') 
+	$('<li></li>').html('<div class="custom"> <a href="#"># '+ pictags[i]._content +'</a></div>') 
 		.appendTo('#content-right-gallerytag ul');	
 
 	/*$('<li></li>').html('<div class = "tagItem"> <a href="#" data-id="' + x[i]._content + '"class= "uibutton"># '+ x[i]._content +'</a></div>') 

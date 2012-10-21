@@ -95,14 +95,16 @@ function addToZone( $item, $dest ) {
 				// This will create a clone of the image that's being dragged
 				var $clone = $item.clone();
 				$clone.removeClass("ui-beingdragged")
-					.appendTo( $list ).hide().fadeIn(function() {
-                    $clone
-						.animate( {width: "40px", height: "40px" })
-						.find("div")
-						.animate({ width: "40px", height: "40px" })
-                        .find("img")
-						.animate({ width: "40px", height: "40px" })
-                });
+					.appendTo( $list )
+					.hide()
+					.fadeIn(function() {
+                    	$clone
+							.animate( {width: "40px", height: "40px" })
+							.find("div")
+							.animate({ width: "40px", height: "40px" })
+                        	.find("img")
+							.animate({ width: "40px", height: "40px" })
+                	});
 			}
 
 // This function will handle the tag-zones accepting photos
