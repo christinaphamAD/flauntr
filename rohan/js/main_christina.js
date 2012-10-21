@@ -24,7 +24,9 @@ function addToZone( $item, $dest ) {
                 	})
 					.draggable({
 						cancel: "a.ui-icon", // clicking an icon won't initiate dragging
-            			cursor: "move"
+						containment: "document",
+            			cursor: "move",
+						zindex: 100,
 					})
 			}
 
