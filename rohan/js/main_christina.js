@@ -1,4 +1,4 @@
-    
+
  $(function() {
         function log( message ) {
             $( "<div>" ).text( message ).prependTo( "#log" );
@@ -53,7 +53,7 @@ $('#tag-finder ul').empty();
 				var data_id = ui.item.value;
 				$('<div class="tag-zone" style="display: none;" id="' + data_id + '"><h3 class="tagzonename">#' + data_id + '</h3></div>') 
 					.appendTo('#content-right')
-          .slideDown('slow',function(){})
+          			.slideDown('slow',function(){})
 					.droppable({
 						// This will check to see if there are duplicates
 						accept: function($item) {
@@ -83,7 +83,9 @@ $('#tag-finder ul').empty();
 
 
 $photo = $( ".scroll-content li");
+var trash_icon = "<a title='Delete this image' class='ui-icon ui-icon-trash'>Delete image</a>";
 
+// TFIX
 function addToZone( $item, $dest ) {
         var $list = $( "ul", $dest ).length ?
          	$( "ul", $dest ) :
@@ -95,6 +97,8 @@ function addToZone( $item, $dest ) {
 				// This will create a clone of the image that's being dragged
 				var $clone = $item.clone();
 				$clone.removeClass("ui-beingdragged")
+					.append(trash_icon)
+					.click(clickFnc)
 					.appendTo( $list )
 					.hide()
 					.fadeIn(function() {
@@ -107,7 +111,24 @@ function addToZone( $item, $dest ) {
                 	});
 			}
 
-// This function will handle the tag-zones accepting photos
+// image deletion function
+function deleteImage( $icon, $item ) {
+	$icon.unbind("click");
+	$item.fadeOut(function(){
+		$item.remove();
+	});
+}
+
+// resolve the icons behavior with event delegation
+var clickFnc = function( event ) {
+	var $item = $( this ),
+		$target = $( event.target );
+		
+	if ( $target.is( "a.ui-icon-trash" ) ) {
+		deleteImage( $target, $item );
+	} 
+        return false;
+}
 
 
 // img tags are clickable
@@ -121,9 +142,6 @@ $('a').live('click',function(event){
 	
 	var setid = $(this).attr('id');
 	var type = $(this).attr('type');
-
-// variables assigned to the tag-zone divs and each individual image
-alert("type is "+type);	
 
 // Function for when the images are added to the tag-zone
 /* Source Code partially added from jQuery Photo Manager demo: 
@@ -149,10 +167,10 @@ console.log(urlphoto);
 	
 	var pictags= data.photo.tags.tag;
 	console.log(pictags);
-	alert(pictags.length);
+	//alert(pictags.length);
 	for(i = 0;i<pictags.length;i++)
 	{
-		alert(pictags.length);
+		//alert(pictags.length);
 
 	$('<li></li>').html('<div class="custom"> <a href="#"># '+ pictags[i]._content +'</a></div>') 
 		.appendTo('#content-right-gallerytag ul');	
@@ -181,16 +199,16 @@ if(type == "set") {
 
 	$.getJSON(url,function(data,status) {
 	console.log(data);
-	alert(data.stat);
+	//alert(data.stat);
 	var pics = data.photoset.photo;
 	var imgurl;
 	// Generate the photos from each set
 	for (var i = 0; i < pics.length; i++) {
-
+		//TFIX
 		imgurl = "http://farm"+pics[i].farm+".staticflickr.com/"+pics[i].server+"/"+pics[i].id+"_"+pics[i].secret+".jpg";
 		console.log("click"+imgurl);
 		// Create a list item with an image from the set
-		$('<li data-id="' + i + '"><div id="'+i+'" class="scroll-content-item"><a type="photo" id="'+pics[i].id+'" src="#"><img src="'+imgurl+'" height="80" width="80"></a></div></li>')	
+		$('<li data-id="' + pics[i].id + '"><div id="'+i+'" class="scroll-content-item"><a type="photo" id="'+pics[i].id+'" src="#"><img src="'+imgurl+'" height="80" width="80"></a></div></li>')	
 			.appendTo('.scroll-content ul')
 			// lets the gallery item be draggable
 			/* Source Code partially added from jQuery Photo Manager demo: 
