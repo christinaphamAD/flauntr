@@ -54,6 +54,8 @@ console.log(urlphoto);
 	$.getJSON(urlphoto,function(data,status) {
 
 	$('#content-right-galleryimg').empty();
+
+	$('#content-right-gallerytag ul').empty();
 	console.log(data);
 
 	var picurl = "http://farm"+data.photo.farm+".staticflickr.com/"+data.photo.server+"/"+data.photo.id+"_"+data.photo.secret+".jpg";
@@ -161,8 +163,9 @@ $(document).ready(function() {
 	//get sets of a user 
 	$('#getsets').click(function(event){
 		$('#sets ul').empty();
-	
-		var flickurl = 	'http://api.flickr.com/services/rest/?method=flickr.photosets.getList&api_key=69ec61b6e4a407a91eb6946b224cb0e1&user_id=18727743@N00&format=json&nojsoncallback=1';
+		
+		var userid = "88032686@N06";
+		var flickurl = 	'http://api.flickr.com/services/rest/?method=flickr.photosets.getList&api_key=69ec61b6e4a407a91eb6946b224cb0e1&user_id='+userid+'&format=json&nojsoncallback=1';
 		var x = $.getJSON(flickurl,function(data,status){
 
 		var x = data.photosets.photoset;

@@ -186,7 +186,7 @@ a{
 #content-right-img{
     height: 300px;
     width: 450px;
-    background: rgba(0, 93, 200, 0.68);
+    /*background: rgba(0, 93, 200, 0.68);*/
     padding-left: 10px;
     overflow-y: scroll;
     overflow-x: hidden;
@@ -200,7 +200,7 @@ a{
     float: none;
     height: 75px;
     width: 450px;
-    background: rgba(0, 93, 200, 0.68);
+    /*background: rgba(0, 93, 200, 0.68);*/
     padding-left: 10px;
     overflow-y: scroll;
     overflow-x: hidden;
@@ -211,7 +211,7 @@ a{
 #content-right-comment{
     height: 75px;
     width: 450px;
-    background: rgba(0, 93, 200, 0.68);
+    /*background: rgba(0, 93, 200, 0.68);*/
     padding-left: 10px;
     overflow-y: scroll;
     overflow-x: hidden;
