@@ -1,6 +1,6 @@
 //global variables
 var api_key="69ec61b6e4a407a91eb6946b224cb0e1";
-var user_id="";
+var user_id="88996367@N07";
 var secret="1cc6ff1c5a480085";
 var frob;
 var auth_token="";
@@ -239,7 +239,7 @@ if(type == "set") {
 					$(this).removeClass("ui-being-dragged"); 
 				}
         	})
-        d = d + 500;	
+        d = d + 200;	
 		}
 
 	});
@@ -275,7 +275,7 @@ if(auth_token == "")
 	//console.log(data);
 	var username = data.auth.user.username;	
 	auth_token = data.auth.token._content;
-	user_id = data.auth.user.nsid;
+	//user_id = data.auth.user.nsid;
 	$("#userinfo").html('<h3>welcome'+username+'</h3>  Your flickrid is '+data.auth.user.nsid);	
 	//alert("token recieved");
 
