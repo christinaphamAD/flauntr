@@ -74,7 +74,7 @@
       <br>
 			<!--<input type="button" id="gettags" value="Suggest Tags"/> 
 			<div id="tag-finder">-->
-				<ul>
+						<ul>
 				</ul>
 			</div>
 		</div>

@@ -74,7 +74,7 @@ $('#tag-finder ul').empty();
                 /*log( ui.item ?
                     "Selected: " + ui.item.label :
                     "Nothing selected, input was " + this.value);*/
-       //     alert("selected !");
+       //    			 alert("selected !");
             },
             open: function() {
                 $( this ).removeClass( "ui-corner-all" ).addClass( "ui-corner-top" );
