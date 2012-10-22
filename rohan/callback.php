@@ -66,8 +66,8 @@
 				</div>
 			</div>
 		</div>		
-		<div id="content-right">
-    	   	<h2 class = "tagheads">Tag Zones</h2>
+		<div id="content-right" class="rightzone">
+    	   	<h2 class = "tagheads">Tags</h2>
 
         	<div id="content-tags">
 			<input type="text" name="tag" id="tag"/>
@@ -78,8 +78,8 @@
 				</ul>
 			</div>
 		</div>
-<div id="content-right-gallery">
-        <h2>GALLERY</h2>  
+<div id="content-right-gallery" class="rightzone">
+        <h2 class="tagheads">Gallery</h2>  
   <div id="content-right-galleryimg"></div><br>
 <div id="content-right-gallerytag">  
 <ul>
@@ -87,7 +87,7 @@
  <ul> 
   </div><br><br>
 <div id="tagtrash">
-  drop tags here !
+
 </div>
 </div>
 

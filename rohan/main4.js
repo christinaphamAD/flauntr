@@ -275,8 +275,8 @@ if(auth_token == "")
 	//console.log(data);
 	var username = data.auth.user.username;	
 	auth_token = data.auth.token._content;
-	//user_id = data.auth.user.nsid;
-	$("#userinfo").html('<h3>welcome'+username+'</h3>  Your flickrid is '+data.auth.user.nsid);	
+	user_id = data.auth.user.nsid;
+	$("#userinfo").html('<h4>	Signed in as <a href="#">'+username+'</a></h4>');	
 	//alert("token recieved");
 
 	});
