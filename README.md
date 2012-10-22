@@ -7,7 +7,9 @@ Team Members: Christina Pham, Rohan Salantry, David Greis
 generating tag buckets, adding delete functionality to the photos in tag buckets, and 
 putting together the home login page. 
 - Rohan Salantry: 
-- David Greis: 
+- David Greis: I started off doing the CSS stylings of the page, but also drifted a lot
+into the animations of the photo elements as they appeared. I also spent a lot of time 
+finally figuring out how Github works.
 
 Project Description (What it does, how you went about it, etc.)
 
@@ -28,11 +30,12 @@ Features:
 Usernames we tested with: 
 - closetbug
 - rohan's username (???) *FIX*
+- dagreis
 
 Technologies Used: 
 - Christina Pham: jQuery, jQuery UI, Dreamweaver, TextWrangler (compare)
 - Rohan Salantry: 
-- David Greis: 
+- David Greis: JQuery, CSS, GitHub, Javascript
 
 URL of the Repository on Github:
 - https://github.com/microcake/flauntr
