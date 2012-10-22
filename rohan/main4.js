@@ -1,3 +1,10 @@
+//global variables
+var api_key="69ec61b6e4a407a91eb6946b224cb0e1";
+var user_id="";
+var secret="1cc6ff1c5a480085";
+var frob;
+var auth_token="";
+
 
  $(function() {
         function log( message ) {
@@ -242,6 +249,38 @@ return false;
 });
 
 $(document).ready(function() {
+
+// authpiece
+if(auth_token == "")
+	{
+	frob = $('#frob').html();
+	alert(frob);
+	
+	var method = "flickr.auth.getToken";
+	var api_sig = secret+"api_key"+api_key+"formatjsonfrob"+frob+"method"+method+"nojsoncallback1";
+				  //secret+"api_key"+api_key+"formatjsonfrob"+frob+"method"+method"nojsoncallback1"; 
+	console.log(api_sig);
+	//api_sig = $.trim(api_sig);
+	//console.log(api_sig);
+	var md5 = calcMD5(api_sig); //api_sig md5 checksum to be passed to get token
+	console.log("MD5 is"+md5);
+	console.log("sample md5" +calcMD5("000005fab4534d05api_key9a0554259914a86fb9e7eb014e4e5d52frob185-837403740methodflickr.auth.getToken"));
+
+	var getauthurl = "http://api.flickr.com/services/rest/?method="+method+"&api_key="+api_key+"&frob="+frob+"&format=json&nojsoncallback=1&api_sig="+md5;
+					  
+
+	console.log(getauthurl);
+
+	var userinfo = $.getJSON(getauthurl,function(data,status){
+	//console.log(data);
+	var username = data.auth.user.username;	
+	auth_token = data.auth.token._content;
+	user_id = data.auth.user.nsid;
+	$("#userinfo").html('<h3>welcome'+username+'</h3>  Your flickrid is '+data.auth.user.nsid);	
+	//alert("token recieved");
+
+	});
+	} // run only once for getting the authentication token from flickr
 	
     //get suggestive tags
 	$('#gettags').click(function(event){
@@ -274,8 +313,8 @@ $(document).ready(function() {
 	$('#getsets').click(function(event){
 		$('#sets ul').empty();
 		
-		var userid = "18727743@N00";
-		var flickurl = 	'http://api.flickr.com/services/rest/?method=flickr.photosets.getList&api_key=69ec61b6e4a407a91eb6946b224cb0e1&user_id='+userid+'&format=json&nojsoncallback=1';
+		//var userid = "18727743@N00";
+		var flickurl = 	'http://api.flickr.com/services/rest/?method=flickr.photosets.getList&api_key=69ec61b6e4a407a91eb6946b224cb0e1&user_id='+user_id+'&format=json&nojsoncallback=1';
 		var x = $.getJSON(flickurl,function(data,status){
 
 		var x = data.photosets.photoset;
