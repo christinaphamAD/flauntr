@@ -227,7 +227,7 @@ console.log(urlphoto);
 	{
 		//alert(pictags.length);
 
-	$('<li></li>').html('<div class="phototag"> <a href="#"># '+ pictags[i]._content +'</a></div>') 
+	$('<li></li>').html('<div class="phototag">#'+ pictags[i]._content +'</div>') 
 		.appendTo('#content-right-gallerytag ul');	
 
 	/*$('<li></li>').html('<div class = "tagItem"> <a href="#" data-id="' + x[i]._content + '"class= "uibutton"># '+ x[i]._content +'</a></div>') 
@@ -316,7 +316,7 @@ if(auth_token == "")
 
 	var userinfo = $.getJSON(getauthurl,function(data,status){
 	//console.log(data);
-	var username = data.auth.user.username;	
+	//var username = data.auth.user.username;	
 	auth_token = data.auth.token._content;
 	//alert("auth"+auth_token);
 	console.log(data);
@@ -359,7 +359,7 @@ if(auth_token == "")
 	$('#getsets').click(function(event){
 		$('#sets ul').empty();
 		
-		//var userid = "18727743@N00";
+		var userid = "18727743@N00";
 		var flickurl = 	'http://api.flickr.com/services/rest/?method=flickr.photosets.getList&api_key=69ec61b6e4a407a91eb6946b224cb0e1&user_id='+user_id+'&format=json&nojsoncallback=1';
 		var x = $.getJSON(flickurl,function(data,status){
 
