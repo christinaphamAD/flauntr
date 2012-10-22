@@ -14,6 +14,13 @@
 	width: 960px;
 }
 
+#userinfo{
+    margin-left:36px;
+    float:left;
+    font-size:.9em;
+    margin-top: 15px;
+}
+
 .login-link {
 	width: 200px;
 	text-align:center;
