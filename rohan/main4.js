@@ -1,6 +1,6 @@
 //global variables
 var api_key="69ec61b6e4a407a91eb6946b224cb0e1";
-var user_id="88996367@N07";
+var user_id="";
 var secret="1cc6ff1c5a480085";
 var frob;
 var auth_token="";
@@ -117,18 +117,56 @@ function addToZone( $item, $dest ) {
                         		.find("img")
 								.animate({ width: "40px", height: "40px" })
                 	});
-						alert("call flickr api to save");
-						console.log($item);
-						console.log($dest);
-			}
+						//alert("call flickr api to save");
+						//console.log($item);
+						var photoid = $item.find('a').attr('id');
+						//console.log(tags+"tag");
+						var tags = $dest.attr('id');
+						//console.log(photoid+"photoid");
+
+
+var method = "flickr.photos.addTags";	
+//auth_token=72157631825065062-f5d55160d601c7f8
+var api_sig = secret+"api_key"+api_key+"auth_token"+auth_token+"formatjsonmethod"+method+"nojsoncallback1photo_id"+photoid+"tags"+tags;
+//method=flickr.photos.addTags&tags=apeshit&api_sig=something
+var md5 = calcMD5(api_sig); //api_sig md5 checksum to be passed to get token
+var getauthurl = "http://api.flickr.com/services/rest/?method="+method+"&api_key="+api_key+"&photo_id="+photoid+"&tags="+tags+"&format=json&nojsoncallback=1&auth_token="+auth_token+"&api_sig="+md5;
+//console.log("hi i am here");
+//console.log(getauthurl);		
+//console.log(api_sig);
+	//api_sig = $.trim(api_sig);
+	//console.log(api_sig);
+					  
+
+console.log(getauthurl);
+
+var result = $.getJSON(getauthurl,function(data,status){
+	//alert("tags added");
+
+	});
+
+						
+}
 
 // image deletion function
 function deleteImage( $icon, $item ) {
 	$icon.unbind("click");
 	$item.fadeOut(function(){
-		$item.remove();
-		alert("flickr api to remove tags");
+
 		console.log($item);
+		var tags = $item.parent().parent().attr('id');	
+		console.log(tags);
+		var photoid = $item.find('a').attr('id');
+		console.log(photoid);
+		//http://api.flickr.com/services/rest/?method=flickr.photos.addTags&api_key=fa3482c071223d8b9f416166c70b547e&photo_id=8061534756&tags=apeshit&format=json&nojsoncallback=1&auth_token=72157631825065062-f5d55160d601c7f8&api_sig=something
+
+
+
+		$item.remove();
+	//	alert("flickr api to remove tags");
+		
+
+		//console.log($item.parent());
 	});
 }
 
@@ -189,7 +227,7 @@ console.log(urlphoto);
 	{
 		//alert(pictags.length);
 
-	$('<li></li>').html('<div class="custom"> <a href="#"># '+ pictags[i]._content +'</a></div>') 
+	$('<li></li>').html('<div class="phototag"> <a href="#"># '+ pictags[i]._content +'</a></div>') 
 		.appendTo('#content-right-gallerytag ul');	
 
 	/*$('<li></li>').html('<div class = "tagItem"> <a href="#" data-id="' + x[i]._content + '"class= "uibutton"># '+ x[i]._content +'</a></div>') 
@@ -259,7 +297,7 @@ $(document).ready(function() {
 if(auth_token == "")
 	{
 	frob = $('#frob').html();
-	alert(frob);
+	//alert(frob);
 	
 	var method = "flickr.auth.getToken";
 	var api_sig = secret+"api_key"+api_key+"formatjsonfrob"+frob+"method"+method+"nojsoncallback1";
@@ -280,6 +318,9 @@ if(auth_token == "")
 	//console.log(data);
 	var username = data.auth.user.username;	
 	auth_token = data.auth.token._content;
+	//alert("auth"+auth_token);
+	console.log(data);
+	console.log("authtoken  "+auth_token);
 	user_id = data.auth.user.nsid;
 	$("#userinfo").html('<h4>	Signed in as <a href="#">'+username+'</a></h4>');	
 	//alert("token recieved");

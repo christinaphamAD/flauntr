@@ -68,8 +68,7 @@
 		</div>		
 		<div id="content-right" class="rightzone">
     	   	<h2 class = "tagheads">Tags</h2>
-    	   	<input type="button" value="save"/>
-
+    	   	
         	<div id="content-tags">
 			<input type="text" name="tag" id="tag"/>
       <br>
