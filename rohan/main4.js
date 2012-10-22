@@ -316,7 +316,7 @@ if(auth_token == "")
 
 	var userinfo = $.getJSON(getauthurl,function(data,status){
 	//console.log(data);
-	//var username = data.auth.user.username;	
+	var username = data.auth.user.username;	
 	auth_token = data.auth.token._content;
 	//alert("auth"+auth_token);
 	console.log(data);
