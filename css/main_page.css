@@ -161,6 +161,9 @@ a{
     border-color:rgba(0, 99, 220, 0.68);
     border-style:solid;
     border-radius:100px;
+	
+	overflow-y: none;
+	overflow-x: auto;
 }
 
 #albumtab{
@@ -237,7 +240,7 @@ a{
     width: 200px;
     background: rgba(0, 99, 220, 0.68);
     padding-left: 10px;
-    overflow-y: scroll;
+    overflow-y: auto;
     overflow-x: hidden;
     border-radius:15px;
     float: left;
@@ -248,7 +251,7 @@ a{
     width: 400px;
   /*  background: rgba(0, 93, 200, 0.68);*/
     padding-left: 10px;
-    overflow-y: scroll;
+    overflow-y: auto;
     overflow-x: hidden;
     border-radius:15px;
     border-left: 20px;
@@ -264,7 +267,7 @@ a{
         margin-left: 15px;
         margin-right: 15px;
     /*background: rgba(0, 93, 200, 0.68);*/
-    overflow-y: scroll;
+    overflow-y: auto;
     overflow-x: hidden;
     border-left-width: 20px;
     float: none;
@@ -276,7 +279,7 @@ a{
     width: 400px;
     /*background: rgba(0, 93, 200, 0.68);*/
     padding-left: 10px;
-    overflow-y: scroll;
+    overflow-y: auto;
     overflow-x: hidden;
     border-radius:15px;
     border-left: 20px;
@@ -288,7 +291,7 @@ a{
     width: 400px;
     /*background: rgba(0, 93, 200, 0.68);*/
     padding-left: 10px;
-    overflow-y: scroll;
+    overflow-y: auto;
     overflow-x: hidden;
     border-radius:15px;
     border-left: 20px;
@@ -353,7 +356,7 @@ clear:both;
     height: 170px;  
     background-color: rgba(0, 99, 220, 0.68);
     margin-bottom: 20px;
-    overflow-y: scroll;
+    overflow-y: auto;
     overflow-x: hidden;
     border-radius:15px;
 }
@@ -397,7 +400,8 @@ clear:both;
 .ui-corner-all, .ui-corner-bottom, .ui-corner-right, .ui-corner-br { -moz-border-radius-bottomright: 4px/*{cornerRadius}*/; -webkit-border-bottom-right-radius: 4px/*{cornerRadius}*/; -khtml-border-bottom-right-radius: 4px/*{cornerRadius}*/; border-bottom-right-radius: 4px/*{cornerRadius}*/; }
 
 .taggedPhoto {
-	overflow: auto;
+	overflow-y: auto;
+	overflow-x: hidden;
 }
 
 .trash-icon {
