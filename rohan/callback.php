@@ -46,7 +46,7 @@
 				<div class="scroll-pane">
 	    			<div class="scroll-content">
 	        			<div class="scroll-content-item">
-							CLICK ON SETS TO RETRIEVE IMAGES
+						
 						</div>
 	            	</div>
 	        		<div class="scroll-bar-wrap">
@@ -68,6 +68,7 @@
 		</div>		
 		<div id="content-right" class="rightzone">
     	   	<h2 class = "tagheads">Tags</h2>
+    	   	<input type="button" value="save"/>
 
         	<div id="content-tags">
 			<input type="text" name="tag" id="tag"/>

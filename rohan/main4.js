@@ -117,6 +117,9 @@ function addToZone( $item, $dest ) {
                         		.find("img")
 								.animate({ width: "40px", height: "40px" })
                 	});
+						alert("call flickr api to save");
+						console.log($item);
+						console.log($dest);
 			}
 
 // image deletion function
@@ -124,6 +127,8 @@ function deleteImage( $icon, $item ) {
 	$icon.unbind("click");
 	$item.fadeOut(function(){
 		$item.remove();
+		alert("flickr api to remove tags");
+		console.log($item);
 	});
 }
 
