@@ -174,7 +174,7 @@ console.log(urlphoto);
 
 	var picurl = "http://farm"+data.photo.farm+".staticflickr.com/"+data.photo.server+"/"+data.photo.id+"_"+data.photo.secret+".jpg";
 	console.log("picurl"+picurl);
-	$('<img id = "gallerylarge" src="'+picurl+'" height="300" width="300">').appendTo('#content-right-galleryimg').hide().fadeIn(1000);
+	$('<img id = "gallerylarge" src="'+picurl+'" height="300" width="300">').appendTo('#content-right-galleryimg').hide().fadeIn(200);
 
 	
 	var pictags= data.photo.tags.tag;
@@ -239,7 +239,7 @@ if(type == "set") {
 					$(this).removeClass("ui-being-dragged"); 
 				}
         	})
-        d = d + 200;	
+        d = d + 40;	
 		}
 
 	});
@@ -327,14 +327,22 @@ if(auth_token == "")
 		}
 
 		// http://farm{farm-id}.staticflickr.com/{server-id}/{id}_{secret}.jpg (formula for flickr url images)
-
 		for (var i = 0; i < limit; i++) {
 		//var imgurl = 'http://farm'+x[i].farm+'.staticflickr.com/'+x[i].server+'/'+x[i].id+'_'+x[i].secret';
 		var imgstr = "http://farm"+x[i].farm+".staticflickr.com/"+x[i].server+"/"+x[i].primary+"_"+x[i].secret+".jpg";	
 		
 		$('<li></li>').html('<div class = "albumSet" id="' + x[i].title._content + '"><a><img src="'+imgstr+'" height="100" width="100" style=""></a><a href="#" id='+x[i].id+' type="set"><div id="davidbutton">'+x[i].title._content +'</div></a></div>') 
-			.appendTo('#sets ul');
+			.appendTo('#sets ul').hide();
 		};
+		d = d + 2000;
+		var albumarray = $('#sets ul').find('li');
+		var d = 0;
+		for (q =0; q<albumarray.length; q++)
+		{	
+			console.log(albumarray[q]);
+			$(albumarray[q]).delay(d).fadeIn();
+			d = d+400;
+		}
 	});	
 
 		console.log(x);
